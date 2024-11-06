@@ -1,4 +1,4 @@
-# Redako-LLN
+# LocalLightNetwork
 
 This place will host the "Local Light Network" repository - a 10 year old project (then called "everything wireless boards"), brought back to life, on the STM32WB platform, instead of the Arduino & NRF24L01+ hardware back in the days. Expect a couple of PCBs, a couple of firmware projects, and perhaps some Python code to end up here.
 
@@ -10,7 +10,9 @@ Things to be developed:
   - Communication and linking firmware to match controls to lights
 - Optionally, a bridge, to interface all of this with home assistant
   - (Or If I don't feel like writing too much firmware I might just use the STM32WB ZigBee stack altogether)
-- Some kind of dashboard. Either home assistant based, or a discrete STM32WB with touch display. 
+- Some kind of dashboard. Either home assistant based, or a discrete STM32WB with touch display.
+
+First stuff will probably be developed on WeAct Studio STM32WB boards: https://github.com/WeActStudio/WeActStudio.STM32WB55CoreBoard
 
 
 

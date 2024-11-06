@@ -1,4 +1,4 @@
-#LocalLightNetwork
+# LocalLightNetwork
 
 This place will host the "Local Light Network" repository - a 10 year old project (then called "everything wireless boards"), brought back to life, on the STM32WB platform, instead of the Arduino & NRF24L01+ hardware back in the days. Expect a couple of PCBs, a couple of firmware projects, and perhaps some Python code to end up here.
 

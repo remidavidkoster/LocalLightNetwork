@@ -1,0 +1,10 @@
+Added Component: Designator=PS?(IRM-60-24)
+Add component (AddParameter): Name = "Digi-Key_Part_Number"; Value = "1866-3067-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digi-Key_Purchase_URL"; Value = "https://www.digikey.com/product-detail/en/mean-well-usa-inc/IRM-60-24/1866-3067-ND/7704690?utm_source=snapeda&utm_medium=aggregator&utm_campaign=symbol"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "MEAN WELL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "IRM-60-24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MPN"; Value = "IRM-60-24"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "DIP-4 Mean Well"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/IRM-60-24/MEAN%20WELL%20USA%20Inc./view-part/275663/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "24V"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=U_Power Management Member=Component PS? IRM-60-24

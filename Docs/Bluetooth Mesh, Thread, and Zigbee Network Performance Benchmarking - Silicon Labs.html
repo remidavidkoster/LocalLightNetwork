@@ -1,0 +1,3497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.silabs.com/wireless/multiprotocol/mesh-performance -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="origin-trial" content="A/kargTFyk8MR5ueravczef/wIlTkbVk1qXQesp39nV+xNECPdLBVeYffxrM8TmZT6RArWGQVCJ0LRivD7glcAUAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><style data-emotion="mantine" data-s=""></style>
+		
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+<title>Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs</title>
+
+<script integrity="sha384-gaZtYaI7oJHEOo1YO6VuoCE4iZ5fMV9mYHP0BHf+r2ttABnpWWCIkgI6ItNW4ZdO" crossorigin="anonymous" charset="utf-8" async="" type="text/javascript" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/recaptcha__en.js.download"></script><script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Corporation",
+		"name": "Silicon Labs",
+		"description": "Leaders in secure, intelligent wireless technology for a more connected world",
+		"image": "https://www.silabs.com/etc.clientlibs/siliconlabs/clientlibs/clientlib-global/resources/images/logo.png",
+		"logo": "https://www.silabs.com/etc.clientlibs/siliconlabs/clientlibs/clientlib-global/resources/images/logo.png",
+		"url": "https://www.silabs.com",
+		"telephone": "+1-512-416-8500",
+		"sameAs": ["https://twitter.com/siliconlabs","https://www.silabs.com/linkedin","https://www.silabs.com/facebook","http://www.youtube.com/viralsilabs","https://www.instagram.com/siliconlabs","https://en.wikipedia.org/wiki/Silicon_Labs","https://www.wikidata.org/wiki/Q2286044","https://www.crunchbase.com/organization/silicon-laboratories","http://weibo.com/siliconlabs" ,"http://i.youku.com/u/UMzQ2MzEwMzU2"],
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "400 West Cesar Chavez",
+			"addressLocality": "Austin",
+			"postalCode": "78701",
+			"addressCountry": "USA"
+		}
+	}
+</script>
+
+<meta property="og:title" content="Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs">
+<meta name="keywords" content="ZigBee and Thread, Bluetooth Low Energy, Thread SDK, Product Pages, Zigbee SDK, Bluetooth SDK">
+<meta name="description" content="Silicon Labs Bluetooth mesh, Thread and Zigbee mesh network performance testing helps developers make more informed choices when designing IoT products.">
+<meta property="og:description" content="Silicon Labs Bluetooth mesh, Thread and Zigbee mesh network performance testing helps developers make more informed choices when designing IoT products.">
+<meta property="og:image" content="https://www.silabs.com/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-latency-over-four-hops.png">
+
+
+
+
+
+
+<meta name="publish-date" content="2024-08-21T16:09:41.409Z">
+<meta name="product-category" content="ZigBee and Thread,Bluetooth Low Energy">
+<meta name="language" content="en">
+<meta name="product-hierarchy" content="Wireless,Wireless|Bluetooth Low Energy,Wireless|ZigBee and Thread">
+<meta name="product-line" content="Wireless">
+<meta name="content-type" content="Product Pages">
+
+
+<link rel="icon" href="https://www.silabs.com/etc.clientlibs/siliconlabs/clientlibs/clientlib-global/resources/images/favicon.ico?1729857131766">
+<link rel="apple-touch-icon-precomposed" href="https://www.silabs.com/etc.clientlibs/siliconlabs/clientlibs/clientlib-global/resources/images/apple-touch-icon-precomposed.png">
+
+
+<link rel="canonical" href="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<meta property="og:url" content="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<link rel="alternate" hreflang="x-default" href="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<link rel="alternate" hreflang="en" href="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<link rel="alternate" hreflang="ja" href="https://jp.silabs.com/wireless/multiprotocol/mesh-performance">
+<link rel="alternate" hreflang="zh-cn" href="https://cn.silabs.com/wireless/multiprotocol/mesh-performance">
+
+
+
+	
+<!-- be_ixf, sdk, gho-->
+<meta name="be:sdk" content="java_sdk_1.5.0">
+<meta name="be:timer" content="36ms">
+<meta name="be:norm_url" content="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<meta name="be:capsule_url" content="https://ixf2-api.bc0a.com/api/ixf/1.0.0/get_capsule/f00000000188377/01706419707">
+<meta name="be:api_dt" content="pny_2024; pnm_10; pnd_18; pnh_15; pnmh_45; pn_epoch:1729291544933">
+<meta name="be:mod_dt" content="pny_2024; pnm_10; pnd_18; pnh_15; pnmh_45; pn_epoch:1729291544933">
+<meta name="be:orig_url" content="https://www.silabs.com/wireless/multiprotocol/mesh-performance">
+<meta name="be:messages" content="0"><style>
+.be-ix-link-block{clear:both}
+.be-ix-link-block .be-related-link-container{padding-left:15px;padding-right:15px;padding-bottom:20px;font-size:14px}
+.be-ix-link-block .be-related-link-container .be-label{margin:0}
+.be-ix-link-block .be-related-link-container .be-list{list-style:none;margin:0;padding:0}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item{margin:0;padding:0}
+@media (max-width: 767px) {
+.be-ix-link-block .be-related-link-container{margin-top:10px}
+.be-ix-link-block .be-related-link-container .be-label{width:100%;margin-bottom:15px}
+.be-ix-link-block .be-related-link-container .be-list{display:block;width:100%}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item{display:block}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item a{line-height:16px;margin-bottom:15px;display:block}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item:last-child a{margin-bottom:0}
+}
+@media (min-width: 768px) {
+.be-ix-link-block .be-related-link-container{display:flex}
+.be-ix-link-block .be-related-link-container .be-label{display:inline-block;margin-right:20px;flex-basis:115px;flex-grow:0;flex-shrink:0}
+.be-ix-link-block .be-related-link-container .be-list{display:inline-block;width:auto}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item{display:inline-block;margin-right:20px}
+.be-ix-link-block .be-related-link-container .be-list .be-list-item:last-child{margin-right:0}
+}
+</style>
+
+
+<script data-cfasync="false" data-testmode="true" id="marvel" data-customerid="f00000000188377" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/marvel.js.download"></script>
+
+
+
+
+
+<style>
+	@media only screen and (max-width: 600px) {
+	  .mantine-Modal-inner {
+		 z-index: 1200;
+         top: 0pm !important
+	  }
+	}
+	
+	@media only screen and (min-width: 600px) {
+	  .mantine-Modal-inner {
+		top: 25px !important;
+        z-index: 1200;
+	  }
+	}
+
+    .mantine-SegmentedControl-label {
+       margin-left: 0 !important;
+       margin-right: 0 !important;
+    }
+</style>
+<script defer="" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/kapa-widget.bundle.js.download" data-website-id="b4eb391a-cb28-4d7a-bedc-faaad13a51b2" data-project-name="Silicon Labs" data-project-color="#FFFFFF" data-button-text-color="#000000" data-button-text-font-weight="normal" data-project-logo="https://avatars.githubusercontent.com/u/7750191?s=280&amp;v=4" data-modal-example-questions="How do I get started with Simplicity Studio for VS Code?, How do I select a protocol for my IoT project?" data-search-mode-enabled="true" data-modal-override-open-class-search="search-ai-input" data-search-result-primary-text-color="#5B4CFE" data-search-show-more-button-text-color="#5B4CFE" data-modal-disclaimer="AI content may be inaccurate. Check results. | [Terms of Use](https://www.silabs.com/about-us/legal/terms-of-use)" data-user-analytics-fingerprint-enabled="true"></script>
+
+<script>
+	(function(){let k=window.Kapa;if(!k){let i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};window.Kapa=i}})();
+	Kapa("onModalOpen", function ({ mode }) {
+		var modalOpenTest = new Event("modalOpenTest");
+		window.dispatchEvent(modalOpenTest);
+	});
+	
+	Kapa("onModalClose", function ({ mode }) {
+		var modalCloseTest = new Event("modalCloseTest");
+		window.dispatchEvent(modalCloseTest);
+	});
+	
+	Kapa("onAskAIQuerySubmit", ({ threadId, questionAnswerId, question }) => {
+	 // var kapaQuerySubmit = new Event("kapaQuerySubmit", { detail: { "threadId": threadId, "questionAnswerId": questionAnswerId, "question": question } });
+	  
+	  var kapaQuerySubmit = new Event("kapaQuerySubmit");
+		kapaQuerySubmit.detail = { "threadId": threadId, "questionAnswerId": questionAnswerId, "question": question };
+	  
+	  
+		window.dispatchEvent(kapaQuerySubmit);
+	});
+</script>
+		
+
+<link rel="preload" href="https://www.silabs.com/etc.clientlibs/siliconlabs/clientlibs/clientlib-global/resources/fonts/inter/Inter.var.woff2" as="font" crossorigin="">
+
+
+    
+    <link rel="stylesheet" as="style" onload="this.rel=&#39;stylesheet&#39;" href="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/CoveoFullSearch.min.css">
+
+
+<link rel="preload" as="style" href="https://www.silabs.com/conf/global/settings/dam/dm/presets/css/siliconlabs_html5_videoviewer.css">
+
+
+
+    
+<link rel="stylesheet" href="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/clientlib-all.min.2f672de5dbe32925e15419b99dc0bc9a.css" type="text/css">
+
+
+
+
+    
+<script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/csrf.min.652a558c3774088b61b0530c184710d1.js.download"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+	<meta class="foundation-mq" name="foundation-mq" content=""><script async="" charset="utf-8" type="text/javascript" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/FacetsMobileMode.min__d67acfe80778de2e04cc.js.download"></script><script async="" charset="utf-8" type="text/javascript" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/Searchbox.min__d67acfe80778de2e04cc.js.download"></script></head>
+
+	<body class="slbs2 page genericpage os-win">
+		<div class="off-canvas-wrapper">
+			<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+				<div class="off-canvas-content" data-off-canvas-content="">
+					
+
+<div class="global-header">
+    <header class="slbs2-header slbs2-nav">
+	<div class="row">
+		<div class="column">
+			<div class="nav-container">
+				<div class="logo">
+					<a href="https://www.silabs.com/" class="logo-link" id="sitelogo">
+						<img src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/redesign-logo.png" alt="Silicon Labs">
+					</a>
+					<button class="menu-button" data-toggle="mobile-menu" aria-label="Open Menu"><i class="fal fa-bars"></i></button>
+					<div class="menu-button-close"><i class="fal fa-times"></i></div>
+				</div>
+				<div class="scrolling-menu">
+					<div class="nav-content">
+						<div class="nav-content-container">
+
+
+
+
+    
+        
+        
+        <div class="newpar new section">
+
+</div>
+
+    
+        
+        
+        <div class="par iparys_inherited">
+
+    
+    
+    
+    
+        
+        
+        <div class="navigation-globalnav parbase">
+
+<div class="slbs2-global-navigation">
+    <div class="gn-main-menu">
+        <ul class="gn-main-menu-list">
+            
+            
+            <li class="list-item navigation-grid">
+                
+                    <div class="back-to-top">⟵ Back</div>
+                
+                <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="Products" class="list-item-link"><span class="all">Products</span>
+                    
+                    <div class="hr-div"></div>
+                </a>
+                <div class="secondary-nav-wrapper navigation-grid">
+                    <div class="secondary-nav-content">
+
+
+
+    <div class="slbs2-navigation-grid">
+        <div class="navigation-grid-row">
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-featured">
+
+<div class="slbs2-navigation-featured">
+    
+    <div class="navigation-featured-details">
+        <a class="featured-navigation-banner" href="https://www.silabs.com/about-us/events/works-with-2024">
+        <div class="navigation-featured-image">
+               
+                <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/works-with-international-virtual-poster.jpg" srcset="/content/dam/siliconlabs/images/events/works-with-2024/works-with-international-virtual-poster.jpg" loading="lazy" alt="Works with international virtual poster">
+        </div>
+        <div class="navigation-featured-text">
+            <div class="navigation-featured-title">
+                Works With Conference 2024: Where Innovation Meets Implementation  
+            </div>
+            <div class="navigation-featured-description">
+                San Jose | Hyderabad | Shanghai | Virtual
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="Wireless" class="mobile-level3-item" href="https://www.silabs.com/wireless">Wireless</a><span class="mobile-level2-item">Wireless</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AmazonSidewalk" class="nav-item-title  " href="https://www.silabs.com/wireless/amazon-sidewalk">Amazon Sidewalk
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Bluetooth" class="nav-item-title  " href="https://www.silabs.com/wireless/bluetooth">Bluetooth
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Matter" class="nav-item-title  " href="https://www.silabs.com/wireless/matter">Matter
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Multiprotocol" class="nav-item-title  " href="https://www.silabs.com/wireless/multiprotocol">Multiprotocol
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Proprietary" class="nav-item-title  " href="https://www.silabs.com/wireless/proprietary">Proprietary
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Thread" class="nav-item-title  " href="https://www.silabs.com/wireless/thread">Thread
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="WiFi" class="nav-item-title  " href="https://www.silabs.com/wireless/wi-fi">Wi-Fi
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="WiSUN" class="nav-item-title  " href="https://www.silabs.com/wireless/wi-sun">Wi-SUN
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ZWave" class="nav-item-title  " href="https://www.silabs.com/wireless/z-wave">Z-Wave
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Zigbee" class="nav-item-title  " href="https://www.silabs.com/wireless/zigbee">Zigbee
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><span id="Technology" class="mobile-level3-item">Technology</span><span class="mobile-level2-item">Technology</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ChannelSounding" class="nav-item-title  " href="https://www.silabs.com/wireless/bluetooth/channel-sounding">Channel Sounding
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="EnergyHarvesting" class="nav-item-title  " href="https://www.silabs.com/wireless/energy-harvesting">Energy Harvesting
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="LPWAN" class="nav-item-title  " href="https://www.silabs.com/wireless/lpwan">LPWAN
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="MachineLearning" class="nav-item-title  " href="https://www.silabs.com/applications/artificial-intelligence-machine-learning">Machine Learning
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Security" class="nav-item-title  " href="https://www.silabs.com/security">Security
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><span id="NonWireless" class="mobile-level3-item">Non-Wireless</span><span class="mobile-level2-item">Non-Wireless</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="MCUs" class="nav-item-title  " href="https://www.silabs.com/mcu">MCUs
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Sensors" class="nav-item-title  " href="https://www.silabs.com/sensors">Sensors
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Interface" class="nav-item-title  " href="https://www.silabs.com/interface">Interface
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="PowerManagement" class="nav-item-title  " href="https://www.silabs.com/power/efp01-power-management-ic">Power Management
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="Services" class="mobile-level3-item" href="https://www.silabs.com/services">Services</a><span class="mobile-level2-item">Services</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CustomPartManufacturing" class="nav-item-title  " href="https://www.silabs.com/services/custom-part-manufacturing-service">Custom Part Manufacturing
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="DeveloperServices" class="nav-item-title  " href="https://www.silabs.com/services/developer-services">Developer Services
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SDKExtendedMaintenanceService" class="nav-item-title  " href="https://www.silabs.com/services/sdk-extended-maintenance-service">SDK Extended Maintenance Service
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</div>
+                </div>
+            </li>
+        
+            
+            
+            <li class="list-item navigation-grid">
+                
+                    <div class="back-to-top">⟵ Back</div>
+                
+                <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="Applications" class="list-item-link"><span class="all">Applications</span>
+                    
+                    <div class="hr-div"></div>
+                </a>
+                <div class="secondary-nav-wrapper navigation-grid">
+                    <div class="secondary-nav-content">
+
+
+
+    <div class="slbs2-navigation-grid">
+        <div class="navigation-grid-row">
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="SmartHome" class="mobile-level3-item" href="https://www.silabs.com/applications/smart-home">Smart Home</a><span class="mobile-level2-item">Smart Home</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Appliances" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/appliances">Appliances
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="EntertainmentDevices" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/entertainment-devices">Entertainment Devices
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="HubsPanelandAccessPoints" class="nav-item-title  wrap-text" href="https://www.silabs.com/applications/smart-home/hubs-panels-and-access-points">Hubs, Panel and Access Points
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="LEDLighting" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/led-lighting">LED Lighting
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SecurityCameras" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/security-cameras">Security Cameras
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Sensors" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/sensors">Sensors
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartLocks" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/smart-locks">Smart Locks
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Switches" class="nav-item-title  " href="https://www.silabs.com/applications/smart-home/switches">Switches
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="IndustrialIoT" class="mobile-level3-item" href="https://www.silabs.com/applications/industrial-iot">Industrial IoT</a><span class="mobile-level2-item">Industrial IoT</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AccessControl" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/access-control">Access Control
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AssetTracking" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/asset-tracking">Asset Tracking
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="BatteryPoweredTools" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/battery-powered-tools">Battery-Powered Tools
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CircuitBreakers" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/circuit-breakers">Circuit Breakers
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CommercialLighting" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/commercial-lighting">Commercial Lighting
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ElectricSubmetering" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/submetering">Electric Submetering
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="FactoryAutomation" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/factory-automation">Factory Automation
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="HumanMachineInterface" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/human-machine-interface">Human Machine Interface
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="IndustrialWearables" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/industrial-wearables">Industrial Wearables
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="PredictiveMaintenance" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/predictive-maintenance">Predictive Maintenance
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ProcessAutomation" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/process-automation">Process Automation
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartHVAC" class="nav-item-title  " href="https://www.silabs.com/applications/industrial-iot/hvac">Smart HVAC
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="SmartCities" class="mobile-level3-item" href="https://www.silabs.com/applications/smart-cities">Smart Cities</a><span class="mobile-level2-item">Smart Cities</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="BatteryStorage" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/energy-production-and-storage/battery-storage">Battery Storage
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="EVChargingStations" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/energy-production-and-storage/ev-charging">EV Charging Stations
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartAgriculture" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/smart-agriculture">Smart Agriculture
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartBuildings" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/smart-buildings">Smart Buildings
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartMetering" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/smart-metering">Smart Metering
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartSolarPVSystem" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/energy-production-and-storage/solar-panels">Smart Solar PV System
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="StreetLighting" class="nav-item-title  " href="https://www.silabs.com/applications/smart-cities/street-lighting">Street Lighting
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="SmartRetail" class="mobile-level3-item" href="https://www.silabs.com/applications/smart-retail">Smart Retail</a><span class="mobile-level2-item">Smart Retail</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CommercialLighting" class="nav-item-title  " href="https://www.silabs.com/applications/smart-retail/commercial-lighting-retail">Commercial Lighting
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="DirectionFinding" class="nav-item-title  " href="https://www.silabs.com/applications/smart-retail/direction-finding">Direction Finding
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ElectronicShelfLabels" class="nav-item-title  " href="https://www.silabs.com/applications/smart-retail/electronic-shelf-labels">Electronic Shelf Labels
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="LossPrevention" class="nav-item-title  " href="https://www.silabs.com/applications/smart-retail/loss-prevention">Loss Prevention
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="WiFiAccessPoints" class="nav-item-title  " href="https://www.silabs.com/applications/smart-retail/enterprise-wi-fi-access-points-wireless-solutions">Wi-Fi Access Points
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="ConnectedHealth" class="mobile-level3-item" href="https://www.silabs.com/applications/connected-health">Connected Health</a><span class="mobile-level2-item">Connected Health</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="PortableMedicalDevices" class="nav-item-title  " href="https://www.silabs.com/applications/connected-health/portable-medical-devices">Portable Medical Devices
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartHospitals" class="nav-item-title  " href="https://www.silabs.com/applications/connected-health/smart-hospitals">Smart Hospitals
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SmartWearableDevices" class="nav-item-title  " href="https://www.silabs.com/applications/connected-health/wearable-devices">Smart Wearable Devices
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</div>
+                </div>
+            </li>
+        
+            
+            
+            <li class="list-item navigation-grid">
+                
+                    <div class="back-to-top">⟵ Back</div>
+                
+                <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="Ecosystems" class="list-item-link"><span class="all">Ecosystems</span>
+                    
+                    <div class="hr-div"></div>
+                </a>
+                <div class="secondary-nav-wrapper navigation-grid">
+                    <div class="secondary-nav-content">
+
+
+
+    <div class="slbs2-navigation-grid">
+        <div class="navigation-grid-row">
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-featured">
+
+<div class="slbs2-navigation-featured">
+    
+    <div class="navigation-featured-details">
+        <a class="featured-navigation-banner" href="https://www.silabs.com/about-us/events/works-with-2024">
+        <div class="navigation-featured-image">
+               
+                <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/works-with-international-virtual-poster.jpg" srcset="/content/dam/siliconlabs/images/events/works-with-2024/works-with-international-virtual-poster.jpg" loading="lazy" alt="Works with international virtual poster">
+        </div>
+        <div class="navigation-featured-text">
+            <div class="navigation-featured-title">
+                Works With Conference 2024: Where Innovation Meets Implementation  
+            </div>
+            <div class="navigation-featured-description">
+                San Jose | Hyderabad | Shanghai | Virtual
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="EcosystemPartners" class="mobile-level3-item" href="https://www.silabs.com/ecosystems">Ecosystem Partners</a><span class="mobile-level2-item">Ecosystem Partners</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AmazonSidewalk" class="nav-item-title  " href="https://www.silabs.com/ecosystems/extend-iot-device-range-with-amazon-sidewalk">Amazon Sidewalk
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="GoogleHome" class="nav-item-title  " href="https://www.silabs.com/ecosystems/speed-development-for-the-google-home-ecosystem">Google Home
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="BluetoothDeveloperJourney" class="nav-item-title  " href="https://www.silabs.com/wireless/bluetooth/bluetooth-developer-journey">Bluetooth Developer Journey
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="MatterDeveloperJourney" class="nav-item-title  " href="https://www.silabs.com/wireless/matter/matter-developer-journey">Matter Developer Journey
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="WiFiDeveloperJourney" class="nav-item-title  " href="https://www.silabs.com/wireless/wi-fi/wi-fi-developer-journey">Wi-Fi Developer Journey
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</div>
+                </div>
+            </li>
+        
+            
+            
+            <li class="list-item navigation-grid">
+                
+                    <div class="back-to-top">⟵ Back</div>
+                
+                <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="Resources" class="list-item-link"><span class="all">Resources</span>
+                    
+                    <div class="hr-div"></div>
+                </a>
+                <div class="secondary-nav-wrapper navigation-grid">
+                    <div class="secondary-nav-content">
+
+
+
+    <div class="slbs2-navigation-grid">
+        <div class="navigation-grid-row">
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-featured">
+
+<div class="slbs2-navigation-featured">
+    
+    <div class="navigation-featured-details">
+        <a class="featured-navigation-banner" href="https://www.silabs.com/developers/simplicity-studio">
+        <div class="navigation-featured-image">
+               
+                <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/simplicity-studio-poster.png" srcset="/content/dam/siliconlabs/images/homepage/product-promotions/simplicity-studio-poster.png" loading="lazy" alt="Simplicity studio poster">
+        </div>
+        <div class="navigation-featured-text">
+            <div class="navigation-featured-title">
+                Simplicity Studio 5
+            </div>
+            <div class="navigation-featured-description">
+                Fast track IoT development
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="DeveloperTools" class="mobile-level3-item" href="https://www.silabs.com/developers">Developer Tools</a><span class="mobile-level2-item">Developer Tools</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SoftwareDocumentation" class="nav-item-title  " href="https://docs.silabs.com/" target="_blank">Software Documentation
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ReleaseNotes" class="nav-item-title  " href="https://www.silabs.com/developers/software-development-kit-release-notes">Release Notes
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Github" class="nav-item-title  " href="https://www.silabs.com/developers/github">Github
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="TechnicalLibrary" class="nav-item-title  " href="https://www.silabs.com/support/resources">Technical Library
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SimplicityStudio" class="nav-item-title  " href="https://www.silabs.com/developers/simplicity-studio">Simplicity Studio
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="MobileApps" class="nav-item-title  " href="https://www.silabs.com/developers#mobile">Mobile Apps
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AllSDKs" class="nav-item-title  " href="https://www.silabs.com/developers">All SDKs
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="DevelopmentKits" class="nav-item-title  " href="https://www.silabs.com/development-tools">Development Kits
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Gateways" class="nav-item-title  " href="https://www.silabs.com/developers?tab=gateways">Gateways
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="RTOS" class="nav-item-title  " href="https://www.silabs.com/developers?tab=rtos">RTOS
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><span id="ContentandTraining" class="mobile-level3-item">Content and Training</span><span class="mobile-level2-item">Content and Training</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="WorksWithConference" class="nav-item-title  " href="https://www.silabs.com/about-us/events/works-with-2024">Works With Conference
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="TechTalksWebinarSeries" class="nav-item-title  " href="https://www.silabs.com/about-us/events/tech-talks-wireless-technology-training">Tech Talks Webinar Series
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="IoTforGoodDeveloperStories" class="nav-item-title  " href="https://www.silabs.com/applications/iot-internet-of-things/iot-for-good">IoT for Good Developer Stories
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Blog" class="nav-item-title  " href="https://www.silabs.com/blog">Blog
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CaseStudies" class="nav-item-title  " href="https://www.silabs.com/applications/case-studies">Case Studies
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Whitepapers" class="nav-item-title  " href="https://www.silabs.com/whitepapers">Whitepapers
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="TrainingLibrary" class="nav-item-title  " href="https://www.silabs.com/support/training">Training Library
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Webinars" class="nav-item-title  " href="https://www.silabs.com/support/training.ct-webinars">Webinars
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="Support" class="mobile-level3-item" href="https://www.silabs.com/support">Support</a><span class="mobile-level2-item">Support</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Community" class="nav-item-title  " href="https://community.silabs.com/s/" target="_blank">Community
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="PartnerNetwork" class="nav-item-title  " href="https://www.silabs.com/partner-network">Partner Network
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ChannelDistribution" class="nav-item-title  " href="https://www.silabs.com/about-us/contact-sales?view=map">Channel &amp; Distribution
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="QualityandPackaging" class="nav-item-title  " href="https://www.silabs.com/about-us/quality">Quality and Packaging
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="HowtoBuy" class="nav-item-title  " href="https://www.silabs.com/products/buy-sample">How to Buy
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SubmitaTicket" class="nav-item-title  " href="https://community.silabs.com/s/support-home" target="_blank">Submit a Ticket
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ReportaSecurityIssue" class="nav-item-title  " href="https://www.silabs.com/security/report-security-vulnerability">Report a Security Issue
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</div>
+                </div>
+            </li>
+        
+            
+            
+            <li class="list-item navigation-grid">
+                
+                    <div class="back-to-top">⟵ Back</div>
+                
+                <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="Company" class="list-item-link"><span class="all">Company</span>
+                    
+                    <div class="hr-div"></div>
+                </a>
+                <div class="secondary-nav-wrapper navigation-grid">
+                    <div class="secondary-nav-content">
+
+
+
+    <div class="slbs2-navigation-grid">
+        <div class="navigation-grid-row">
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-featured">
+
+<div class="slbs2-navigation-featured">
+    <div class="navigation-featured-heading">View On-Demand</div>
+    <div class="navigation-featured-details">
+        <a class="featured-navigation-banner" href="https://www.silabs.com/about-us/events/tech-talks-wireless-technology-training">
+        <div class="navigation-featured-image">
+               
+                <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/tech-talks-technology-training-series-poster.png" srcset="/content/dam/siliconlabs/images/webinar/tech-talks/tech-talks-technology-training-series-poster.png" loading="lazy" alt="Tech talks technology training series poster">
+        </div>
+        <div class="navigation-featured-text">
+            <div class="navigation-featured-title">
+                Tech Talks Webinar Series: Wireless Technology Training
+            </div>
+            <div class="navigation-featured-description">
+                Created for developers, by developers
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="Company" class="mobile-level3-item" href="https://www.silabs.com/about-us">Company</a><span class="mobile-level2-item">Company</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Careers" class="nav-item-title  " href="https://www.silabs.com/about-us/careers">Careers
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="EnvironmentalSocialGovernance" class="nav-item-title  " href="https://www.silabs.com/about-us/environmental-social-governance">Environmental, Social &amp; Governance
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="CommunityCommitment" class="nav-item-title  " href="https://www.silabs.com/about-us/community-commitment">Community Commitment
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="DiversityEquityandInclusion" class="nav-item-title  " href="https://www.silabs.com/about-us/diversity-equity-and-inclusion">Diversity, Equity and Inclusion
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="EnvironmentalSustainability" class="nav-item-title  " href="https://www.silabs.com/about-us/environmental-sustainability">Environmental Sustainability
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Quality" class="nav-item-title  " href="https://www.silabs.com/about-us/quality">Quality
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ManagementTeam" class="nav-item-title  " href="https://www.silabs.com/about-us/management">Management Team
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SupplyChainResponsibility" class="nav-item-title  " href="https://www.silabs.com/about-us/supply-chain-responsibility">Supply Chain Responsibility
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><span id="NewsEvents" class="mobile-level3-item">News &amp; Events</span><span class="mobile-level2-item">News &amp; Events</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Blog" class="nav-item-title  " href="https://www.silabs.com/blog">Blog
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="NewsRoom" class="nav-item-title  " href="https://news.silabs.com/" target="_blank">News Room
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Events" class="nav-item-title  " href="https://www.silabs.com/about-us/events">Events
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="InvestorRelations" class="mobile-level3-item" href="https://investor.silabs.com/" target="_blank">Investor Relations</a><span class="mobile-level2-item">Investor Relations</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="AnnualReportProxies" class="nav-item-title  " href="https://investor.silabs.com/financials/annual-reports-proxies" target="_blank">Annual Report &amp; Proxies
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="BoardofDirectors" class="nav-item-title  " href="https://investor.silabs.com/corporate-governance/board-of-directors" target="_blank">Board of Directors
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="QuarterlyResults" class="nav-item-title  " href="https://investor.silabs.com/financials/quarterly-results" target="_blank">Quarterly Results
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="SECFilings" class="nav-item-title  " href="https://investor.silabs.com/financials/sec-filings" target="_blank">SEC Filings
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+                <div class="navigation-grid-column">
+                    
+                    <div class="inner">
+
+
+
+
+    
+    
+    <div class="navigation-navitem parsys">
+
+<div class="navigation-item ">
+    <div class="nav-item-heading"><a id="Offices" class="mobile-level3-item" href="https://www.silabs.com/about-us/contact-us">Offices</a><span class="mobile-level2-item">Offices</span></div>
+    <div class="nav-items-cols">
+        <div class="nav-items ">
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="Hyderabad" class="nav-item-title  " href="https://www.silabs.com/about-us/silicon-labs-india">Hyderabad
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="OtherGlobalOffices" class="nav-item-title  " href="https://www.silabs.com/about-us/contact-us">Other Global Offices
+                        
+                    </a>
+                </div>
+            </div>
+        
+            <div class="nav-item">
+                <div class="nav-item-content">
+                    <a id="ContactUs" class="nav-item-title  " href="https://www.silabs.com/about-us/contact-us">Contact Us
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+                </div>
+            
+        </div>
+    </div>
+
+
+</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div></div>
+
+    
+
+</div>
+
+    
+
+</div>
+						<!--<sly data-sly-resource="globaltopnav.en"></sly>-->
+					</div>
+					<div class="nav-resources">
+						<div class="menu-language secondary-nav">
+	<div class="language-header">
+		<a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" class="nav-link"><i class="fal fa-globe"></i> English <i class="fal fa-chevron-down"></i></a>
+		<ul class="sub-nav">
+			<li class="sub-nav-item current" id="top-nav-list-en">
+				<a href="javascript:OneLink(&#39;www.silabs.com&#39;,%20&#39;top_nav_en_translation_link_click&#39;);" class="sub-nav-link">English</a>
+			</li>
+			<li class="sub-nav-item" id="top-nav-list-cn">
+				<a href="javascript:OneLink(&#39;cn.silabs.com&#39;,%20&#39;top_nav_cn_translation_link_click&#39;);" class="sub-nav-link">简体中文</a>
+			</li>
+			<li class="sub-nav-item" id="top-nav-list-jp">
+				<a href="javascript:OneLink(&#39;jp.silabs.com&#39;,%20&#39;top_nav_jp_translation_link_click&#39;);" class="sub-nav-link">日本語</a>
+			</li>
+		</ul>
+	</div>
+</div>
+						<div class="secondary-nav account-menu">
+	<div class="account-header">
+		<a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" class="nav-link"><i class="fal fa-user"></i><i class="fal fa-chevron-down"></i></a>
+		<ul id="menu-account" class="menu-account"><li class="menu-account-item"><a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="top_nav_login" class="menu-account-link">Log In</a></li><li class="menu-account-item"><a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" id="top_nav_register" class="menu-account-link">Register</a></li></ul>
+	</div>
+</div>
+						<div class="secondary-nav menu-search">
+    <a href="https://www.silabs.com/wireless/multiprotocol/mesh-performance#" class="nav-link"><i class="fal fa-search"></i><i class="fal fa-times"></i></a>
+</div>
+					</div>
+				</div>
+				
+
+
+
+
+    
+        
+        
+        <div class="newpar new section">
+
+</div>
+
+    
+        
+        
+        <div class="par iparys_inherited">
+
+    
+    
+    
+    
+        
+        
+        <div class="headersearch parbase">
+<div></div>
+
+<input type="hidden" id="translate_sections" name="xlate_sections" value="/www.silabs.com/pages/default.aspx,/internal.silabs.com/pages/default.aspx,/translate.silabs.com/pages/default.aspx,/translate.silabs.com/Pages/default.aspx,/products/">
+<div class="menu-search secondary-nav">
+	<div id="globalsearchbox" data-search-id="siliconlaboratoriesincproduction863opbbg" class="CoveoSearchInterface Coveostate CoveoComponentState CoveoComponentOptions CoveoQueryController CoveoDebug coveo-after-initialization" style="display: block;"><div class="CoveoFacetsMobileMode"></div>
+		<div class="CoveoSearchbox coveo-custom-height" data-placeholder="Search silabs.com" data-enable-omnibox="true" data-enable-query-syntax="true" data-enable-wildcards="true" data-height="45"><div class="CoveoOmnibox magic-box" role="search" aria-haspopup="listbox" style="height: 45px; line-height: 45px;"><div class="magic-box-input" style="height: 43px;"><div class="magic-box-underlay" style="height: 45px;"><span class="magic-box-highlight-container"><span data-id="start" data-success="true"><span data-id="Start" data-success="true"><span data-id="Empty" data-success="true" data-value=""></span></span></span></span><span class="magic-box-ghost-text"></span></div><input autocomplete="off" type="text" role="combobox" form="coveo-dummy-form" aria-autocomplete="list" title="Insert a query. Press enter to send" aria-expanded="false" aria-owns="coveo-magicbox-suggestions-4987cdfd-0435-449e-69a9-eb3eb48d6dc2" aria-controls="coveo-magicbox-suggestions-4987cdfd-0435-449e-69a9-eb3eb48d6dc2" aria-label="Search" placeholder="Search silabs.com" style="height: 45px;"><div class="magic-box-clear coveo-accessible-button" role="button" aria-label="Clear" tabindex="-1" aria-hidden="true" style="height: 45px;"><div class="magic-box-icon" style="height: 45px;"><svg focusable="false" enable-background="new 0 0 13 13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clear" class="magic-box-clear-svg"><title>Clear</title><g fill="currentColor"><path d="m7.881 6.501 4.834-4.834c.38-.38.38-1.001 0-1.381s-1.001-.38-1.381 0l-4.834 4.834-4.834-4.835c-.38-.38-1.001-.38-1.381 0s-.38 1.001 0 1.381l4.834 4.834-4.834 4.834c-.38.38-.38 1.001 0 1.381s1.001.38 1.381 0l4.834-4.834 4.834 4.834c.38.38 1.001.38 1.381 0s .38-1.001 0-1.381z"></path></g></svg></div></div></div><div class="magic-box-suggestions"><div class="coveo-magicbox-suggestions" id="coveo-magicbox-suggestions-4987cdfd-0435-449e-69a9-eb3eb48d6dc2" role="listbox" aria-label="Search Suggestions"><div role="option"></div></div></div></div><a class="CoveoSearchButton coveo-accessible-button" role="button" aria-label="Search" tabindex="0" style="height: 45px;"><span class="coveo-search-button"><svg focusable="false" enable-background="new 0 0 20 20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Search" class="coveo-search-button-svg"><title>Search</title><g fill="currentColor"><path class="coveo-magnifier-circle-svg" d="m8.368 16.736c-4.614 0-8.368-3.754-8.368-8.368s3.754-8.368 8.368-8.368 8.368 3.754 8.368 8.368-3.754 8.368-8.368 8.368m0-14.161c-3.195 0-5.793 2.599-5.793 5.793s2.599 5.793 5.793 5.793 5.793-2.599 5.793-5.793-2.599-5.793-5.793-5.793"></path><path d="m18.713 20c-.329 0-.659-.126-.91-.377l-4.552-4.551c-.503-.503-.503-1.318 0-1.82.503-.503 1.318-.503 1.82 0l4.552 4.551c.503.503.503 1.318 0 1.82-.252.251-.581.377-.91.377"></path></g></svg></span><span class="coveo-search-button-loading"><svg focusable="false" enable-background="new 0 0 18 18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loading" class="coveo-search-button-loading-svg"><title>Loading</title><g fill="currentColor"><path d="m16.76 8.051c-.448 0-.855-.303-.969-.757-.78-3.117-3.573-5.294-6.791-5.294s-6.01 2.177-6.79 5.294c-.134.537-.679.861-1.213.727-.536-.134-.861-.677-.728-1.212 1.004-4.009 4.594-6.809 8.731-6.809 4.138 0 7.728 2.8 8.73 6.809.135.536-.191 1.079-.727 1.213-.081.02-.162.029-.243.029z"></path><path d="m9 18c-4.238 0-7.943-3.007-8.809-7.149-.113-.541.234-1.071.774-1.184.541-.112 1.071.232 1.184.773.674 3.222 3.555 5.56 6.851 5.56s6.178-2.338 6.852-5.56c.113-.539.634-.892 1.184-.773.54.112.887.643.773 1.184-.866 4.142-4.57 7.149-8.809 7.149z"></path></g></svg></span></a></div>
+	<div aria-live="polite" class="coveo-visible-to-screen-reader-only"></div></div>
+</div>
+
+</div>
+
+    
+
+</div>
+
+    
+
+
+			</div>
+		</div>
+	</div>
+</header>
+
+
+    
+    
+    <div><div id="breadcrumbs" class="slbs2-breadcrumb show-for-medium-up">
+	<div class="row">
+		<div class="column">
+			<div class="breadcrumb-row">
+				<div class="breadcrumb-home">
+					<span>
+						<a title="Silicon Labs Home" href="https://www.silabs.com/" onclick="CQ_Analytics.record({event:&#39;followBreadcrumb&#39;,values: { breadcrumbPath: &#39;/content/siliconlabs/en/&#39; },collect: false,options: { obj: this },componentPath: &#39;/apps/siliconlabs/components/content/breadcrumb&#39;})">
+							<i class="fas fa-home-alt"></i>
+							
+						</a>
+					</span>
+					<span>//</span>
+				</div>
+				<div class="breadcrumb-item">
+					<span>
+						<a title="Wireless" href="https://www.silabs.com/wireless" onclick="CQ_Analytics.record({event:&#39;followBreadcrumb&#39;,values: { breadcrumbPath: &#39;/content/siliconlabs/en/wireless.html&#39; },collect: false,options: { obj: this },componentPath: &#39;/apps/siliconlabs/components/content/breadcrumb&#39;})">
+							
+							Wireless
+						</a>
+					</span>
+					<span>//</span>
+				
+					<span>
+						<a title="Multiprotocol Connectivity" href="https://www.silabs.com/wireless/multiprotocol" onclick="CQ_Analytics.record({event:&#39;followBreadcrumb&#39;,values: { breadcrumbPath: &#39;/content/siliconlabs/en/wireless/multiprotocol.html&#39; },collect: false,options: { obj: this },componentPath: &#39;/apps/siliconlabs/components/content/breadcrumb&#39;})">
+							
+							Multiprotocol Connectivity
+						</a>
+					</span>
+					<span>//</span>
+				
+					<span>
+						
+							
+							Mesh Performance Learning Center
+						
+					</span>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+    
+</div>
+
+<div class="slbs2 slbs2-main-content">
+
+
+
+
+    
+    
+    <div class="banner parsys">
+
+
+
+<div class="slbs2 slbs2-banner lazy-loading sl-smartcrop low-profile content-left  overlay-gradient-left short-banner lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/white-house-banner.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Small?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Medium?$LargeFullBleed$::medium,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::default" title="White house banner" style="background-image: url(&quot;https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$&quot;);">
+    <!-- Overlay for Large/Desktop -->
+    <div class="show-for-large hide-for-medium-only hide-for-small-only overlay" style="background: linear-gradient(to left, transparent 40%, rgba(255,255,255,0.98) 100%);"></div>
+
+    <div class="mobile-img lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/white-house-banner.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Small?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Medium?$LargeFullBleed$::medium,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::default" title="White house banner" style="background-image: url(&quot;https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$&quot;); display: block;"></div>
+
+    <!-- Content -->
+    <div class="row main-content lazy-loading sl-smartcrop main_contentbanner lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/white-house-banner.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Small?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Medium?$LargeFullBleed$::medium,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Large?$LargeFullBleed$::default" title="White house banner" style="background-image: url(&quot;https://silabs.scene7.com/is/image/siliconlabs/white-house-banner:Extra-Large?$LargeFullBleed$&quot;);">
+        <div class="column banner-inner-content">
+            <div class="content">
+                <h1 class="heading main-heading heading-silicongray"> Benchmarking Bluetooth Mesh, Thread, and Zigbee Network Performance</h1>
+                <p class="heading-silicongray heading-silicongray"></p>
+            </div>
+            <!-- Overlay for Tablet -->
+            <div class="show-for-medium-only hide-for-small hide-for-large overlay" style="background: linear-gradient(to left, transparent 40%, rgba(255,255,255,0.98) 100%);"></div>
+        </div>
+        
+        
+    </div>
+
+    <div class="row hide-for-large">
+        
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 25px; padding-bottom: 10px; ">
+	<p><a href="https://www.silabs.com/wireless/bluetooth/bluetooth-mesh">Bluetooth mesh</a> , <a href="https://www.silabs.com/wireless/thread" target="_blank">Thread</a>, and <a href="https://www.silabs.com/wireless/zigbee" target="_blank">Zigbee</a> are popular mesh networking standards used to add <a href="https://www.silabs.com/products/wireless" target="_blank">wireless connectivity</a> to building and home automation products. Silicon Labs conducted mesh network performance testing to help developers better understand difficult-to-predict wireless behavior and make more informed choices when designing products for the IoT.</p>
+
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 35px; ">
+	<h2 style="text-align: center;">Examining Mesh Networking Technology</h2>
+<p>Networking performance characteristics such as throughput, latency and the impact of network size on scalability and reliability are important factors to consider. <a href="https://www.silabs.com/whitepapers/selecting-the-appropriate-wireless-mesh-network-technology">Additional factors</a> such as technologies used in different ecosystems, gateway interfaces and cloud connectivity should also be factored in when making a technology selection.<br>
+</p>
+
+</div></div>
+
+
+    
+    
+    <div class="table parbase">
+
+
+<div class="slbs2-table row">
+	<div class="column">
+		<div class="table-container">
+			<div class="table-scroll">
+				<div class="no-border ">
+					<div data-attr-col1="px" data-attr-hdr="px" data-attr-body="px">
+						<table width="100%" cellspacing="0" cellpadding="1" border="1">
+<tbody><tr><th>&nbsp;</th>
+<th>Bluetooth Mesh</th>
+<th>Thread</th>
+<th>Zigbee</th>
+</tr><tr><td><b>Market Focus</b></td>
+<td>Lighting and Home Automation</td>
+<td>Commercial/Industrial</td>
+<td>Home Automation, Lighting, Metering</td>
+</tr><tr><td><b>Maturity</b></td>
+<td>Established 2017<br>
+</td>
+<td>Established 2015</td>
+<td>Established 2003<br>
+</td>
+</tr><tr><td><b>Application Layer</b><br>
+</td>
+<td>Native Mesh Model</td>
+<td>Flexibile support for IP-based application layers like &nbsp;dotdot, OCF and Nest Weave</td>
+<td>Comprehensive&nbsp;Zigbee Cluster Library (ZCL)</td>
+</tr><tr><td><b>IPv6</b><br>
+</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr><tr><td><b>Cloud Connectivity</b><br>
+</td>
+<td>Smartphone (Temporary) Gateway</td>
+<td>Border Router Gateway</td>
+<td>Gateway</td>
+</tr><tr><td><b>Ecosystems</b><br>
+</td>
+<td>None</td>
+<td>Nest</td>
+<td>Amazon, IKEA, Phillips HUE, Samsung SmartThings, Lowes Iris, Wink, Cox, Rogers, Deutsch Telekom (Qivicon) and others</td>
+</tr><tr><td><b>Routing</b><br>
+</td>
+<td>Managed Flooding</td>
+<td>Full Routing</td>
+<td>Full Routing</td>
+</tr><tr><td><b>Additional Notes</b><br>
+</td>
+<td>Beaconing, Direct Phone Connectivity</td>
+<td>—</td>
+<td>Most Mature</td>
+</tr></tbody></table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-text">
+<p data-emptytext="Text"></p>
+</div>
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 35px; padding-bottom: 20px; ">
+	<h2 style="text-align: center;">Comparing The Performance of Mesh Networking Standards</h2>
+
+</div></div>
+
+
+    
+    
+    <div class="backgroundcontainer">
+
+<div class="row">
+    <div class="column slbs2-backgroundcontainer no-top-margin background-white less-padding border-gray">
+         <div>
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Benchmark Requirements</h3>
+<ul style="list-style-position: inside;">
+<li>Utilize real-world environment with varying Bluetooth, Wi-Fi, and Zigbee network activity</li>
+<li>Synchronize time stamps across all nodes in the network with Ethernet backchannel and packet tracing</li>
+<li>Measure performance across varying throughput and latency configurations</li>
+<li>Correlate energy measurements with wireless traffic for improved system characterization</li>
+</ul>
+
+</div></div>
+
+
+</div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="feature">
+
+
+
+<section class="slbs2 slbs2-feature">
+    <div class="row ">
+        
+        <div class="column content-container">
+            <div class="content">
+                
+                <h2 class="heading main-heading-alt">
+                    
+                    
+                        <a style="cursor: text !important;">Testing Network Performance</a>
+                    
+                </h2>
+                <p>Tests were conducted using Silicon Labs’ Wireless Gecko SoC platform capable of running Bluetooth Mesh, Thread, Zigbee, and Proprietary protocols. Silicon Labs Bluetooth Mesh, Thread, and Zigbee software stacks were utilized. The test environment was a commercial office building with active Wi-Fi and Zigbee networks in range. Wireless test clusters were deployed in hallways, meeting rooms, offices, and open areas.</p>
+                <div>
+                    <a class="none"></a>
+                </div>
+            </div>
+        </div>
+        <div class="column image ">
+            <a>
+                
+
+
+
+	<div class="slbs2-dmimage">
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-testing-network-performance.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance?$TransparentPNG$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance?$TransparentPNG$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance?$TransparentPNG$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance?$TransparentPNG$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-testing-network-performance?$TransparentPNG$::default" alt="Mesh testing network performance" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-testing-network-performance" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+
+
+
+            </a>
+            
+        </div>
+    </div>
+</section>
+</div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 20px; padding-bottom: 20px; ">
+	<h2 style="text-align: center;">Benchmarking Results</h2>
+
+</div></div>
+
+
+    
+    
+    <div class="backgroundcontainer">
+
+<div class="row">
+    <div class="column slbs2-backgroundcontainer no-top-margin background-white less-padding border-gray">
+         <div>
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Results Overview</h3>
+<ul style="list-style-position: inside;">
+<li>Thread, Zigbee, and Bluetooth mesh perform similarly in small networks under small payloads</li>
+<li>Thread and Zigbee outperform Bluetooth mesh when payload and throughput needs increase</li>
+<li>Latency increases for all three as network size grows, but Bluetooth mesh experiences the largest increase</li>
+<li>Selecting your IoT wireless connectivity solution should include additional criteria such as expected ecosystems and power consumption requirements</li>
+<li>For large Bluetooth mesh networks relay optimization can be used to optimize performance</li>
+<li>Bluetooth mesh works best when short messages (&lt;=11B) are used especially for multicast messages</li>
+</ul>
+
+</div></div>
+
+
+</div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 40px; ">
+	
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131948" aria-controls="dmModal1729857131948" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-throughput-for-100-byte-payload.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$Large2Column50pct$::default" alt="Mesh throughput for 100 byte payload" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-throughput-for-100-byte-payload" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Throughput for 100-Byte Payload</h3>
+<ul style="list-style-position: inside;">
+<li>Typical networks consist of two to three hops</li>
+<li>Throughput varies based on number of hops</li>
+<li>Protocol performance becomes similar as number of hops increase</li>
+<li>Bluetooth mesh small packet payload results in reduced throughput</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+	
+	<div class="show-for-small-only full-bleed">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Latency over Four Hops</h3>
+<ul style="list-style-position: inside;">
+<li>All protocols provide similar latency for very small payloads</li>
+<li>Thread fragmentation (6LowPAN) achieves the best efficiency and latency performance as payload size increases</li>
+<li>Zigbee has good efficiency but some application layer fragmentation</li>
+<li>Bluetooth mesh latency degrades as payload size increases due to small packet size and resulting segmentation<br>
+</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131963" aria-controls="dmModal1729857131963" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-latency-over-four-hops.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$Large2Column50pct$::default" alt="Mesh latency over four hops" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-latency-over-four-hops" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+	
+	<div class="show-for-small-only row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131969" aria-controls="dmModal1729857131969" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-small-network-small-payload.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$Large2Column50pct$::default" alt="Mesh small network small payload" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-small-network-small-payload" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Small Network with Small Payload</h3>
+<ul style="list-style-position: inside;">
+<li>All three peak below 50 milliseconds (ms)</li>
+<li>All spread up to 90 ms, well under the market target of 200 ms</li>
+<li>Multicast for all protocols provides very high reliability<br>
+</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+	
+	<div class="show-for-small-only row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Small Network with Moderate Payload</h3>
+<ul style="list-style-position: inside;">
+<li>Thread performs the best with latency up to 100 milliseconds (ms)</li>
+<li>Zigbee performs well – most packets received with 80 ms latency, spreading up to 130 ms</li>
+<li>Bluetooth mesh latency has the greatest variation, 20 to 200 ms<br>
+</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131984" aria-controls="dmModal1729857131984" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-small-network-moderate-payload.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$Large2Column50pct$::default" alt="Mesh small network moderate payload" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-small-network-moderate-payload" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+	
+	<div class="show-for-small-only row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131989" aria-controls="dmModal1729857131989" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-large-network-small-payload.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$Large2Column50pct$::default" alt="Mesh large network small payload" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-large-network-small-payload" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Large Network with Small Payload</h3>
+<ul style="list-style-position: inside;">
+<li>Thread performs best with latency up to 100 ms</li>
+<li>Zigbee performs well – most packets received with 80 ms latency, spreading up to 130 ms</li>
+<li>Bluetooth mesh latency peaks at 60 ms, spreading past 250 ms</li>
+<li>All 192 nodes were Bluetooth mesh relays and no relay optimization was used</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+	
+	<div class="show-for-small-only row column">
+		<hr style="margin-top: 0px; margin-bottom: 0px;">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="grid">
+
+<div class="row ">
+    <div class="column">
+        <div class="slbs2-grid slbs2-content-grid   content-block-grid  ">
+            <div class="grid-row">
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column">
+	<h3>Large Network with Moderate Payload</h3>
+<ul style="list-style-position: inside;">
+<li>Thread performs the best with latency spreading up to 100 ms</li>
+<li>Zigbee performs well – most packets received with 80 ms latency, spreading up to 130 ms</li>
+<li>Bluetooth mesh latency peaks at 60 ms, spreading past 250 ms</li>
+<li>All 192 nodes were Bluetooth mesh relays and no relay optimization was used</li>
+</ul>
+
+</div></div>
+
+
+</div>
+                    </div>
+                    
+                
+                    <div class="grid-column column medium-6">
+                        
+                        <div class="inner ">
+
+
+
+
+    
+    
+    <div class="dmimage parbase">
+
+
+
+	<div class="slbs2-dmimage">
+		
+			<a class="magnifying-glass black" data-open="dmModal1729857131999" aria-controls="dmModal1729857131999" aria-haspopup="dialog" tabindex="0"></a>
+		
+		
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/products/Bluetooth/mesh/mesh-large-network-moderate-payload.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$Large2Column50pct$::small,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$Large2Column30pct$::medium,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$Large2Column50pct$::large,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$Large2Column50pct$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$Large2Column50pct$::default" alt="Mesh large network moderate payload" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-large-network-moderate-payload" style="">
+	
+	
+
+
+
+		
+	</div>
+
+
+
+
+	
+
+
+
+</div>
+
+
+</div>
+                    </div>
+                    
+                
+            </div>
+
+        </div>
+    </div>
+</div></div>
+
+
+    
+    
+    <div class="horizontalseparator parbase">
+
+<div class="slbs2 slbs2-hr">
+	<div class="show-for-medium row column">
+		<hr style="0 0">
+	</div>
+	
+	<div class="show-for-small-only row column">
+		<hr style="0 0">
+	</div>
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 40px; padding-bottom: 15px; ">
+	<h2 style="text-align: center;">Explore Mesh Performance Resources</h2>
+
+</div></div>
+
+
+    
+    
+    <div class="backgroundcontainer">
+
+<div class="row">
+    <div class="column slbs2-backgroundcontainer no-top-margin background-white less-padding border-none">
+         <div>
+
+
+
+
+    
+    
+    <div class="assetcardswithcarousel">
+
+<div class="slb2 assetcards-with-carousel">
+    <div class="assetcards-header">
+        
+        <div class="nav-arrows hide-for-mobile" style="display: none;">
+            <span class="arrow arrow-previous slick-arrow slick-hidden" aria-disabled="true" tabindex="-1"></span><span class="arrow arrow-next slick-arrow slick-hidden" aria-disabled="true" tabindex="-1"></span>
+        </div>
+    </div>
+
+    <div class="assetcards-carousel slick-initialized slick-slider" data-slidecount="4">
+        
+    
+        
+    
+        
+    
+        
+    <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1164px; transform: translate3d(0px, 0px, 0px);"><div class="slick-slide slick-current slick-active" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00" data-slick-index="0" aria-hidden="false">
+            <a href="https://www.silabs.com/documents/public/application-notes/an1424-bluetooth-mesh-11-network-performance.pdf" class="assetcard" tabindex="0">
+                <div class="icon-image">
+                    <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/documentation-pdf-blue.png" srcset="/content/dam/siliconlabs/images/icons/navigation-icons/documentation-pdf-blue.png" alt="icon image" loading="lazy">
+                </div>
+                <div class="assetcard-title">
+                    AN1424: Bluetooth® Mesh 1.1 Network Performance 
+                </div>
+                <div class="assetcard-resourcetype">
+                    <strong>Resource Type:</strong> Application Notes
+                </div>
+                
+                
+            </a>
+        </div><div class="slick-slide slick-active" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide01" data-slick-index="1" aria-hidden="false">
+            <a href="https://www.silabs.com/documents/public/application-notes/an1408-openthread-mesh-network-performance.pdf" class="assetcard" tabindex="0">
+                <div class="icon-image">
+                    <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/documentation-pdf-blue.png" srcset="/content/dam/siliconlabs/images/icons/navigation-icons/documentation-pdf-blue.png" alt="icon image" loading="lazy">
+                </div>
+                <div class="assetcard-title">
+                    AN1408: OpenThread Mesh Network Performance
+                </div>
+                <div class="assetcard-resourcetype">
+                    <strong>Resource Type:</strong> Application Notes
+                </div>
+                
+                
+            </a>
+        </div><div class="slick-slide slick-active" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide02" data-slick-index="2" aria-hidden="false">
+            <a href="https://www.silabs.com/documents/login/application-notes/an1138-zigbee-mesh-network-performance.pdf" class="assetcard" tabindex="0">
+                <div class="icon-image">
+                    <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/documentation-pdf-blue.png" srcset="/content/dam/siliconlabs/images/icons/navigation-icons/documentation-pdf-blue.png" alt="icon image" loading="lazy">
+                </div>
+                <div class="assetcard-title">
+                    AN1138: Zigbee Mesh Network Performance
+                </div>
+                <div class="assetcard-resourcetype">
+                    <strong>Resource Type:</strong> Application Notes
+                </div>
+                
+                
+            </a>
+        </div><div class="slick-slide slick-active" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide03" data-slick-index="3" aria-hidden="false">
+            <a href="https://www.silabs.com/documents/public/application-notes/an1142-mesh-network-performance-comparison.pdf" class="assetcard" tabindex="0">
+                <div class="icon-image">
+                    <img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/documentation-pdf-blue.png" srcset="/content/dam/siliconlabs/images/icons/navigation-icons/documentation-pdf-blue.png" alt="icon image" loading="lazy">
+                </div>
+                <div class="assetcard-title">
+                    AN1142: Mesh Network Performance Comparison
+                </div>
+                <div class="assetcard-resourcetype">
+                    <strong>Resource Type:</strong> Application Notes
+                </div>
+                
+                
+            </a>
+        </div></div></div></div>
+</div></div>
+
+
+    
+    
+    <div class="generictext text parbase">
+
+<div class="slbs2-generic-text row column" style="padding-top: 25px; ">
+	
+</div></div>
+
+
+    
+    
+    <div class="resourcecardswithcarousel">
+
+<div class="slb2 resource-cards-with-carousel">
+    
+
+    <div class="resourcecards-filters">
+        <div class="filter-label">Filter :</div>
+        <div class="facets">
+            <div class="filters">
+                <div class="filter">Recorded Webinar</div>
+            
+                <div class="filter">White Papers</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="resourcecards-carousel slick-initialized slick-slider slick-dotted">
+        <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 582px; transform: translate3d(0px, 0px, 0px);"><div class="resourcecard recorded-webinar slick-slide slick-current slick-active" data-attr-url="https://www.silabs.com/support/training/benchmarking-bluetooth-mesh-thread-and-zigbee-network-performance" data-slick-index="0" aria-hidden="false" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10">
+            <div class="image-container">
+                
+                
+                    
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/social-thumbnails/homepage-thumbnail.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail" alt="Resource image" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::small,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::medium,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::large,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::default" src="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$" style="">
+	
+	
+
+
+
+                
+                <div class="res-feature">
+                    <h5>Recorded Webinar</h5>
+                </div>
+            </div>
+            <div class="res-title">
+                <span><a href="https://www.silabs.com/support/training/benchmarking-bluetooth-mesh-thread-and-zigbee-network-performance" tabindex="0">Benchmarking Bluetooth Mesh vs Thread vs Zigbee Performance</a></span>
+            </div>
+        </div><div class="resourcecard white-papers slick-slide slick-active" data-attr-url="https://www.silabs.com/whitepapers/select-the-appropriate-wireless-mesh-network-technology" data-slick-index="1" aria-hidden="false" style="width: 261px;" tabindex="0" role="tabpanel" id="slick-slide11">
+            <div class="image-container">
+                
+                
+                    
+
+	
+		<img class="lazy-loading sl-smartcrop lazy-loaded" data-dam-path="/content/dam/siliconlabs/images/social-thumbnails/homepage-thumbnail.png" data-scene7-path="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail" alt="Resource image" data-smartcrop-images="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::small,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::medium,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::large,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::extra-large,https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$::default" src="https://silabs.scene7.com/is/image/siliconlabs/homepage-thumbnail?$TransparentPNG$" style="">
+	
+	
+
+
+
+                
+                <div class="res-feature">
+                    <h5>White Papers</h5>
+                </div>
+            </div>
+            <div class="res-title">
+                <span><a href="https://www.silabs.com/whitepapers/select-the-appropriate-wireless-mesh-network-technology" tabindex="0">Selecting the Appropriate Wireless Mesh Network Technology</a></span>
+            </div>
+        </div></div></div>
+    
+        
+    <ul class="slick-dots" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 1" tabindex="0" aria-selected="true">1</button></li></ul></div>
+</div></div>
+
+
+</div>
+    </div>
+</div></div>
+
+
+</div>
+
+
+
+
+
+
+<footer class="slbs2-footer">
+    <div class="row">
+        <div class="column medium-12">
+            <div class="logo">
+                <a href="https://www.silabs.com/"><img class="footer-logo" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/logo-white.png" alt="Silicon Labs"></a>
+            </div>
+        </div>
+        <div class="column medium-6 large-4 footer-stay-connected">
+            <div class="footer-stay-connected-title">
+                Stay Connected With Us
+            </div>
+            <div class="footer-stay-connected-text">
+                Plug into the latest on Silicon Labs products, including product releases and resources, documentation updates, PCN notifications, upcoming events, and more.
+            </div>
+            <div class="footer-stay-connected-form">
+                <input type="email" class="email-preference-text" value="" placeholder="Enter Your Email" maxlength="225">
+                <div class="email-preference-submit" data-target="https://www.silabs.com/support/email-preferences"><i class="fas fa-paper-plane"></i></div>
+            </div>
+        </div>
+        <div class="column medium-6 large-6 footer-links">
+             <ul class="links row footer-link-items">
+                <li class="column">
+                    <a href="https://www.silabs.com/about-us" id="footer_nav_about">About Us</a>
+                </li>
+                 <li class="column">
+                     <a href="https://www.silabs.com/about-us/careers" id="footer_nav_careers">Careers</a>
+                 </li>
+                 <li class="column">
+                    
+                     <a href="https://community.silabs.com/" id="footer_nav_community" target="_blank">Community</a>
+                 </li>
+                 <li class="column">
+                     <a href="https://www.silabs.com/about-us/contact-us" id="footer_nav_contact">Contact Us</a>
+                 </li>
+                 <li class="column">
+                     <a href="https://www.silabs.com/about-us/legal/cookie-policy" id="footer_nav_cookie">Cookies</a>
+                 </li>
+
+             </ul>
+            <ul class="links row footer-link-items">
+                <li class="column">
+                    <a href="https://www.silabs.com/about-us/corporate-responsibility" id="footer_nav_citizenship">Corporate Responsibility</a>
+                </li>
+                <li class="column">
+                    <a href="http://investor.silabs.com/" id="footer_nav_investor" target="_blank">Investor Relations</a>
+                </li>
+                <li class="column">
+                    <a href="http://news.silabs.com/" id="footer_nav_news" target="_blank">Press Room</a>
+                </li>
+                <li class="column">
+                     <a href="https://www.silabs.com/about-us/legal" id="footer_nav_legal">Privacy and Terms</a>
+                 </li>
+                 <li class="column">
+                     <a href="mailto:feedback@silabs.com" id="footer_nav_sitefeedback" target="_blank">Site Feedback </a>
+                 </li>
+
+
+            </ul>
+        </div>
+        <div class="column medium-12 large-2 social-rows">
+            <div class="social-row">
+                <div class="social-icon facebook visible">
+                    <a href="https://www.silabs.com/facebook" id="footer_facebook"></a>
+                </div>
+                <div class="social-icon linkedin visible">
+                    <a href="https://www.silabs.com/linkedin" id="footer_linkedin"></a>
+                </div>
+                <div class="social-icon instagram visible">
+                    <a href="https://www.instagram.com/siliconlabs" id="footer_instagram" target="_blank"></a>
+                </div>
+                <div class="social-icon twitter visible">
+                    <a href="https://twitter.com/siliconlabs" id="footer_twitter" target="_blank"></a>
+                </div>
+            </div>
+            <div class="social-row">
+                <div class="social-icon youtube visible">
+                    <a href="http://www.youtube.com/viralsilabs" id="footer_youtube" target="_blank"></a>
+                </div>
+                <div class="social-icon wechat visible">
+                    <a href="https://www.silabs.com/about-us/wechat" rel="publisher" id="footer_wechat"></a>
+                </div>
+                <div class="social-icon youku visible">
+                    <a href="http://i.youku.com/u/UMzQ2MzEwMzU2" id="footer_youku" target="_blank"></a>
+                </div>
+                <div class="social-icon weibo visible">
+                    <a href="http://weibo.com/siliconlabs" id="footer_weibo" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="column medium-12 copy">
+            <div class="copyright medium-6">Copyright © <span id="cpyear">2024</span> Silicon Laboratories. All rights reserved.
+                <script type="text/javascript">
+                    document.getElementById("cpyear").textContent = new Date().getFullYear();
+                </script>
+            </div>
+        </div>
+        <div class="column medium-12 be-ix-link-block sl-be-link-equity">
+            <div class="row"><div class="be-related-link-container"><div class="be-label">Also of Interest:</div><ul class="be-list"><li class="be-list-item"><a class="be-related-link" href="https://www.silabs.com/wireless/wi-fi/wi-fi-coexistence">Managing Coexistence Between Wi-Fi, Zigbee,...</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.silabs.com/support/training/benchmarking-bluetooth-mesh-thread-and-zigbee-network-performance">Benchmarking Bluetooth Mesh vs Thread vs...</a></li><li class="be-list-item"><a class="be-related-link" href="https://www.silabs.com/blog/matter-vs-z-wave-what-you-need-to-know">Matter vs Z-Wave: What You Need to Know</a></li></ul></div></div>
+<!--
+   be_sdkms_pub:link-block; link-block_1.0.0.0; bodystr;
+   be_sdkms_date_modified:pn_tstr:Fri Oct 18 22:45:44 UTC 2024; pn_epoch:1729291544933;
+   be_sdkms_timer: 0;
+-->
+
+        </div>
+    </div>
+</footer>
+
+					<div class="off-canvas-exit"></div>
+					
+
+					
+					
+				</div>
+			</div>
+		<div class="cookie-popup"><div class="cookie-popup-inner"><div class="cookie-popup-inner-text">Important information regarding the Silicon Labs website: this site uses cookies to improve user experience and stores information on your computer. By continuing to use our site, you consent to our <a href="https://www.silabs.com/about-us/legal/cookie-policy">Cookie Policy</a>. If you do not want to enable cookies, review our policy and learn how they can be disabled. Note that disabling cookies will disable some features of the site.</div><div class="cookie-popup-inner-button"><a class="accept-cookie button primary-blue">Accept</a></div></div></div></div>
+		
+
+<div class="slbs2-table-popup" style="display: none;">
+	<a class="popup-close with-text">Close</a>
+	<a class="popup-close icon-only"></a>
+	<div class="loading-div">Loading Results</div>
+	<div class="table-popup-container">
+	</div>
+</div>
+<div class="slbs2-table-popup-error" style="display: none;">
+	<a class="popup-close with-text">Close</a>
+	<a class="popup-close icon-only"></a>
+	<div class="table-popup-error-container">
+	</div>
+</div>
+<div class="hidden" id="popup-partnumber"></div>
+<div class="hidden" id="popup-device"></div>
+<div class="hidden" id="popup-issample"></div>
+		<div class="modal fade" id="popupModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Please select at least one column.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+		
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var silabsProfileCookie;
+</script>
+
+
+
+
+<script type="text/javascript">silabsProfileCookie = 'silabsprofile';</script>
+
+<script type="text/javascript">
+
+    var sl = sl || {};
+    var digitalData = digitalData || {};
+    var pageTags = "";
+    var aemHierarchy = "content:siliconlabs:en:wireless:multiprotocol:mesh-performance";
+
+    sl.currentRunMode = 'prod';
+    sl.ssoDomain = 'https://community.silabs.com';
+    sl.ssoEndpointUrl = 'https://community.silabs.com/idp/login?app=0sp16000000PBKn';
+    sl.registrationUrl = 'https://community.silabs.com/SL_CommunitiesSelfReg';
+    sl.ssoLogoutUrl = 'https://community.silabs.com/SL_Logout?LOF=https://www.silabs.com/system/sling/logout.html?resource=' + window.location.pathname;
+    //sl.ssoLogoutUrl = sl.ssoLogoutUrl.replace("[thedomain]",curDomain);
+    //if (sl.currentRunMode == "prod") {
+    //    sl.ssoLogoutUrl = "https://siliconlabs.force.com/apex/SL_Logout?LOF=https://" + window.location.hostname + "/system/sling/logout.html?resource=" + window.location.pathname;
+    //} else {
+    //    sl.ssoLogoutUrl = "https://full-siliconlabs.cs67.force.com/apex/SL_Logout?LOF=https://" + window.location.hostname + "/system/sling/logout.html?resource=" + window.location.pathname;
+    //}
+
+    sl.utils = sl.utils || {};
+    sl.dataUtils = sl.dataUtils || {};
+
+    sl.contentTypeMappings = new Map();
+    sl.contentTypeMappings.set('/apps/siliconlabs/templates/casestudypage', 'Case Study');
+
+    sl.utils.readCookie = sl.utils.readCookie || function(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            };
+
+    sl.dataUtils.getContentType = sl.dataUtils.getContentType || function() {
+                // TODO: Should this use the content type tag?
+                //return sl.contentTypeMappings.get("\/apps\/siliconlabs\/templates\/genericpage");
+                var currtags = "silicon\u002Dlabs\u002Dsoftware:software\u002Ddevelopment\u002Dkits\/bluetooth\u002Dsdk,silicon\u002Dlabs\u002Dproducts:wireless\/bluetooth\u002Dlow\u002Denergy,silicon\u002Dlabs\u002Dsoftware:software\u002Ddevelopment\u002Dkits\/zigbee\u002Dsdk,silicon\u002Dlabs\u002Dproducts:wireless\/zigbee\u002Dand\u002Dthread,silicon\u002Dlabs\u002Dsoftware:software\u002Ddevelopment\u002Dkits\/thread\u002Dsdk,content\u002Dtype:product\u002Dpages";
+                var fndCtype = currtags;
+                if (currtags !== null && typeof currtags != 'undefined') {
+                    var tagArr = currtags.split(',');
+                    for (var i = 0, length = tagArr.length; i < length; i++) {
+                        var currTagVals = tagArr[i].split(':');
+                        if (currTagVals[0] == 'content-type') {
+                            return currTagVals[1];
+                        }
+                    }
+                }
+                return "";
+            };
+
+    sl.dataUtils.getExperienceLevel = sl.dataUtils.getExperienceLevel || function() {
+                var experienceLevel =  "";
+                return experienceLevel;
+            }
+
+    sl.dataUtils.getBreadcrumbText = sl.dataUtils.getBreadcrumbText || function() {
+                if (document.getElementById('breadcrumbs') !== null && document.getElementById('breadcrumbs').getElementsByClassName('column')[0].children[0]) {
+                    return document.getElementById('breadcrumbs').getElementsByClassName('column')[0].children[0].innerHTML.replace(/<[^>]*>/g, "").trim().replace(/\n/g, '').replace(/\s\s+/g, ' ');
+                }
+            };
+    sl.dataUtils.getProfileID = sl.dataUtils.getProfileID || function(cookie) {
+                function containsProfileID(str) {
+                    return str.indexOf('UserID') > -1;
+                }
+                if (cookie) {
+                    var profile = cookie.split('|').filter(containsProfileID);
+                    if (profile.length > 0) {
+                        return profile[0].split('=')[1];
+                    }
+                }
+                return "unknown";
+            };
+
+    sl.dataUtils.getContactID = sl.dataUtils.getContactID || function(cookie) {
+                function containsContactID(str) {
+                    return str.indexOf('ContactID') > -1;
+                }
+                if (cookie) {
+                    var contact = cookie.split('|').filter(containsContactID);
+                    if (contact.length > 0) {
+                        return contact[0].split('=')[1];
+                    }
+                }
+                return "unknown";
+            };
+
+    sl.dataUtils.getIsEmployee = sl.dataUtils.getIsEmployee || function(cookie) {
+                function containsIsEmployee(str) {
+                    return str.indexOf('IsEmployee') > -1;
+                }
+                if (cookie) {
+                    var contact = cookie.split('|').filter(containsIsEmployee);
+                    if (contact.length > 0) {
+                        return contact[0].split('=')[1];
+                    }
+                }
+                return "unknown";
+            };
+
+    sl.dataUtils.getcTier = sl.dataUtils.getcTier || function(cookie) {
+                function containscTier(str) {
+                    return str.indexOf('cTier') > -1;
+                }
+                if (cookie) {
+                    var contact = cookie.split('|').filter(containscTier);
+                    if (contact.length > 0) {
+                        return contact[0].split('=')[1];
+                    }
+                }
+                return "none";
+            };
+
+    sl.dataUtils.getdisplyname = sl.dataUtils.getdisplyname || function(cookie) {
+                function containsdisplayName(str) {
+                    return str.indexOf('communityUserName') > -1;
+                }
+                if (cookie) {
+                    var contact = cookie.split('|').filter(containsdisplayName);
+                    if (contact.length > 0) {
+                        return contact[0].split('=')[1];
+                    }
+                }
+                return "";
+            };
+
+    sl.dataUtils.getPageLanguage = sl.dataUtils.getPageLanguage || function() {
+                if (document.documentElement.lang !== null) {
+                    return document.documentElement.lang;
+                }
+            };
+
+    sl.dataUtils.getPageTitleText = sl.dataUtils.getPageTitleText || function() {
+                if (document.getElementsByTagName('title')[0].innerHTML !== null) {
+                    return document.getElementsByTagName('title')[0].innerHTML;
+                }
+            };
+
+    sl.dataUtils.getPageTags = sl.dataUtils.getPageTags || function() {
+                return "silicon-labs-tags=silicon-labs-software:software-development-kits/bluetooth-sdk;silicon-labs-products:wireless/bluetooth-low-energy;silicon-labs-software:software-development-kits/zigbee-sdk;silicon-labs-products:wireless/zigbee-and-thread;silicon-labs-software:software-development-kits/thread-sdk;content-type:product-pages;";
+            };
+
+    sl.dataUtils.getAemHierachy = sl.dataUtils.getAemHierachy || function() {
+                return "content:siliconlabs:en:wireless:multiprotocol:mesh-performance";
+            };
+
+    sl.dataUtils.getSiteSection = sl.dataUtils.getSiteSection || function() {
+        var siteSection =  "Product Line";
+        return siteSection;
+    };
+
+    digitalData = {
+        "page": {
+            "pageInfo": {
+                "pageTitle": sl.dataUtils.getPageTitleText(),
+                "contentType": sl.dataUtils.getContentType(),
+                "breadcrumbText": sl.dataUtils.getBreadcrumbText(),
+                "siteSpace": "www",
+                "pageTags": sl.dataUtils.getPageTags(),
+                "aemHierachy": sl.dataUtils.getAemHierachy(),
+                "experienceLevel": sl.dataUtils.getExperienceLevel(),
+                "siteSection": sl.dataUtils.getSiteSection()
+            },
+            "attributes": {
+                "language": sl.dataUtils.getPageLanguage()
+            }
+        },
+        "products": [ {
+  "productInfo" : {
+    "productLine" : "Wireless",
+    "productCategory" : "Bluetooth Low Energy",
+    "partNumber" : null,
+    "productFamily" : null
+  },
+  "attributes" : {
+    "productType" : null
+  }
+}, {
+  "productInfo" : {
+    "productLine" : "Wireless",
+    "productCategory" : "ZigBee and Thread",
+    "partNumber" : null,
+    "productFamily" : null
+  },
+  "attributes" : {
+    "productType" : null
+  }
+} ],
+        "kits": null,
+        "referenceDesigns": null,
+        "applications": null,
+        "software": [ {
+  "softwareInfo" : {
+    "softwareLevel-1" : "Software Development Kits",
+    "softwareLevel-2" : "Bluetooth SDK",
+    "softwareLevel-3" : null,
+    "softwareLevel-4" : null
+  }
+}, {
+  "softwareInfo" : {
+    "softwareLevel-1" : "Software Development Kits",
+    "softwareLevel-2" : "Zigbee SDK",
+    "softwareLevel-3" : null,
+    "softwareLevel-4" : null
+  }
+}, {
+  "softwareInfo" : {
+    "softwareLevel-1" : "Software Development Kits",
+    "softwareLevel-2" : "Thread SDK",
+    "softwareLevel-3" : null,
+    "softwareLevel-4" : null
+  }
+} ],
+        "technologies": null,
+        "accessory": null,
+        "user": {
+            "profile": {
+                "profileInfo": {
+                    "profileID": sl.dataUtils.getProfileID(sl.utils.readCookie(silabsProfileCookie)),
+                    "contactID": sl.dataUtils.getContactID(sl.utils.readCookie(silabsProfileCookie)),
+                    "isEmployee": sl.dataUtils.getIsEmployee(sl.utils.readCookie(silabsProfileCookie)),
+                    "cTier": sl.dataUtils.getcTier(sl.utils.readCookie(silabsProfileCookie)),
+                    "communityUserName": sl.dataUtils.getdisplyname(sl.utils.readCookie(silabsProfileCookie)),
+                }
+            }
+        },
+        "community": {
+            "attributes": {
+                "subjectTags": ""
+            },
+            "forumInfo": {
+                "answerStatus": "",
+                "numReplies": "",
+                "topicauthorName": "",
+                "topicauthorID": "",
+                "answerauthorName": "",
+                "answerauthorID": "",
+                "escalationStatus": ""
+            },
+            "kbInfo" : {
+                "KBauthor": ""
+            }
+        }
+    }
+
+    //console.log(digitalData)
+
+</script>
+
+
+<script type="text/javascript" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/VideoViewer.js.download"></script>
+
+
+
+    
+    
+    <script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/satelliteLib-c7a1ad75c2b6a899845cf1eb59f4ef12438f1a1c.js.download"></script>
+
+
+    <script type="text/javascript">_satellite.pageBottom();</script>
+
+
+
+<script class="coveo-script" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/CoveoJsSearch.Lazy.min.js.download"></script>
+<script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/en.js.download"></script>
+
+
+<script type="text/javascript" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/munchkin.js.download"></script>
+<script type="text/javascript">
+	var isEdit = false;
+	var isDesign = false;
+	var munchkinTags = "silicon-labs-tags=silicon-labs-software:software-development-kits/bluetooth-sdk;silicon-labs-products:wireless/bluetooth-low-energy;silicon-labs-software:software-development-kits/zigbee-sdk;silicon-labs-products:wireless/zigbee-and-thread;silicon-labs-software:software-development-kits/thread-sdk;content-type:product-pages;";
+</script>
+
+
+<script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/osano.js.download"></script><iframe name="__uspapiLocator" style="display: none;" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/saved_resource(1).html"></iframe>
+
+
+
+    
+<script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/clientlib-all.min.be2e1b1a37c104f98785847b78405c06.js.download"></script>
+
+
+
+
+
+
+    
+<script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/clientlib-custom.min.3fb147ea3a3b6ee57f6b0dbbf4b97b22.js.download"></script>
+
+
+
+	
+
+
+<div id="kapa-widget-container"><button class="mantine-UnstyledButton-root mantine-Button-root mantine-1wkx884" type="button" data-button="true" style="position: fixed; bottom: 20px; right: 20px; height: 5rem; width: 4.5rem; padding: 0px; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px; z-index: 199;"><div class="mantine-1wpc1xj mantine-Button-inner"><span class="mantine-1ryt1ht mantine-Button-label"><div class="mantine-Stack-root mantine-1b4vo4u" style="margin-top: 4px;"><div class="mantine-Image-root mantine-yxmaw9" style="width: 2rem;"><figure class="mantine-qenwvq mantine-Image-figure"><div class="mantine-1iugybl mantine-Image-imageWrapper"><img src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/7750191" alt="Project Logo" class="mantine-1sc70ew mantine-Image-image" style="object-fit: cover; width: 2rem; height: 2rem;"></div></figure></div><div class="mantine-Text-root mantine-1fqft3i" style="color: rgb(0, 0, 0); text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;">Ask AI</div></div></span></div></button><style>
+          .grecaptcha-badge {
+            visibility: hidden;
+          }
+        </style><div><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-ow6uol4f1m0m" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/anchor.html"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/saved_resource(2).html"></iframe></div></div></div><div><div dir="ltr" id="kapa-widget-portal"><div><div class="mantine-Modal-root mantine-yxmaw9"></div></div></div></div><script src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/api.js.download" async=""></script><div class="reveal-overlay"><div id="dmModal1729857131948" class="slbs2-shadowbox reveal-modal " data-reveal="ukx2ho-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131948" data-resize="dmModal1729857131948">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-throughput-for-100-byte-payload(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-throughput-for-100-byte-payload?$LargeFullContentWidth$" alt="Mesh throughput for 100 byte payload?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="dmModal1729857131963" class="slbs2-shadowbox reveal-modal " data-reveal="pbigd7-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131963" data-resize="dmModal1729857131963">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-latency-over-four-hops(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-latency-over-four-hops?$LargeFullContentWidth$" alt="Mesh latency over four hops?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="dmModal1729857131969" class="slbs2-shadowbox reveal-modal " data-reveal="yateo6-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131969" data-resize="dmModal1729857131969">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-small-network-small-payload(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-small-payload?$LargeFullContentWidth$" alt="Mesh small network small payload?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="dmModal1729857131984" class="slbs2-shadowbox reveal-modal " data-reveal="2uas4m-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131984" data-resize="dmModal1729857131984">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-small-network-moderate-payload(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-small-network-moderate-payload?$LargeFullContentWidth$" alt="Mesh small network moderate payload?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="dmModal1729857131989" class="slbs2-shadowbox reveal-modal " data-reveal="l4sk3y-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131989" data-resize="dmModal1729857131989">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-large-network-small-payload(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-small-payload?$LargeFullContentWidth$" alt="Mesh large network small payload?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="dmModal1729857131999" class="slbs2-shadowbox reveal-modal " data-reveal="kjma9o-reveal" aria-labelledby="testLabel" data-v-offset="10px" aria-hidden="true" role="dialog" data-yeti-box="dmModal1729857131999" data-resize="dmModal1729857131999">
+		<div class="dmImage-background white">
+		
+
+
+	<img itemprop="image" src="./Bluetooth Mesh, Thread, and Zigbee Network Performance Benchmarking - Silicon Labs_files/mesh-large-network-moderate-payload(1)" srcset="https://silabs.scene7.com/is/image/siliconlabs/mesh-large-network-moderate-payload?$LargeFullContentWidth$" alt="Mesh large network moderate payload?$LargeFullContentWidth$">
+
+
+		</div>
+	  <a class="close-modal white" data-close="" aria-label="Close">×</a>
+	</div></div><div class="reveal-overlay"><div id="modal" class="reveal" data-reveal="6929to-reveal" role="dialog" aria-hidden="true" data-yeti-box="modal" data-resize="modal">
+						<div class="modal-content"></div>
+						<button class="close-button" data-close="" aria-label="Close modal" type="button">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div></div><div class="reveal-overlay"><div class="reveal download-modal" data-reveal="vc66fb-reveal" role="dialog" aria-hidden="true">
+						<div class="modal-content">
+							<h2>Your File Will Start Downloading Shortly</h2>
+							<p>Thank you for downloading <strong class="download-name"></strong>.</p>
+							
+							<p>If you have any issues downloading, please contact <a href="https://www.silabs.com/contact-sales">sales
+									support</a> or <a href="https://www.silabs.com/support">product technical
+									support</a>.</p>
+						</div>
+						<button class="close-button" data-close="" aria-label="Close modal" type="button">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div></div></body></html>

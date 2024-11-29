@@ -1,0 +1,22 @@
+* C:\Git\Redako-LLN\Hardware\Simulations\Gate Driver.asc
+XU1 N010 0 0 N011 N013 UCC27517_TRANS
+V1 N009 0 PULSE(0 3.3 0 1n 1n 1u 2u)
+R1 N010 N009 30
+V2 N013 0 5
+R2 N012 N011 1m
+D1 N007 N008 D
+D2 N006 N007 D
+D3 N005 N006 D
+D4 N004 N005 D
+D5 N003 N004 D
+D6 N002 N003 D
+R3 N001 N002 7
+V3 N001 0 24
+XU2 N008 N012 0 AO3400
+.model D D
+.lib C:\Users\Red\Documents\LTspiceXVII\lib\cmp\standard.dio
+.tran 200u
+.lib C:\Git\Redako-LLN\Hardware\Simulations\AO3400.mod
+.lib C:\Git\Redako-LLN\Hardware\Simulations\UCC27517_TRANS.LIB
+.backanno
+.end

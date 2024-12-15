@@ -1,4 +1,4 @@
-Circuit: * C:\Git\Redako-LLN\Hardware\Simulations\Gate Driver.asc
+Circuit: * C:\Git\Redako-L4N\Hardware\Simulations\Gate Driver.asc
 
 Questionable use of curly braces in "b§e_abmgate yint 0 v={if(v(a)>{{vthresh}},{{vdd}},{{vss}})}"
     Error: undefined symbol in: "if([v](a)>((vthresh)),((vdd)),((vss)))"
@@ -8,23 +8,22 @@ Questionable use of curly braces in "b§e_abmgate yint 0 v={if(v(a)>{{vthresh}}|v
     Error: undefined symbol in: "if([v](a)>((vthresh))|v(b)>((vthresh)),((vss)),((vdd)))"
 Instance "m:u2:2": Length shorter than recommended for a level 3 MOSFET.
 Direct Newton iteration for .op point succeeded.
-Heightened Def Con from 8.3003e-005 to 8.3037e-005
-Heightened Def Con from 0.000101003 to 0.000101037
+Heightened Def Con from 1.99908e-009 to 2.00183e-009
 
-Date: Fri Nov 29 22:24:43 2024
-Total elapsed time: 1.285 seconds.
+Date: Sun Dec 08 21:02:48 2024
+Total elapsed time: 0.145 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 161336
-traniter = 161304
-tranpoints = 60387
-accept = 44669
-rejected = 15720
-matrix size = 79
-fillins = 18
+totiter = 10855
+traniter = 10808
+tranpoints = 4111
+accept = 3286
+rejected = 826
+matrix size = 81
+fillins = 29
 solver = Normal
-Matrix Compiler1: 3.53 KB object code size  0.7/0.4/[0.2]
-Matrix Compiler2: 5.65 KB object code size  0.3/0.7/[0.2]
+Matrix Compiler1: 4.13 KB object code size  0.7/0.4/[0.2]
+Matrix Compiler2: 6.02 KB object code size  0.4/1.6/[0.3]
 

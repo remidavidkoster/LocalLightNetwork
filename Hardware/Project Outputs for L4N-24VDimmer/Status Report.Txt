@@ -1,0 +1,10 @@
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [L4N-24VDimmer.PrjPcb]
+   Generated File[Pick Place for L4N-24VDimmer.csv]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 1:22:40 PM On 12/30/2024

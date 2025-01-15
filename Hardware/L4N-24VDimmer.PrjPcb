@@ -3,7 +3,7 @@ Version=1.0
 HierarchyMode=0
 ChannelRoomNamingStyle=0
 ReleasesFolder=
-ChannelDesignatorFormatString=$Component_$RoomName
+ChannelDesignatorFormatString=$Component$ChannelAlpha
 ChannelRoomLevelSeperator=_
 OpenOutputs=1
 ArchiveProject=0
@@ -154,29 +154,77 @@ ParameterCount=0
 VariationCount=0
 ParamVariationCount=0
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for L4N-24VDimmer\L4N-24VDimmer-RoundHoles-NonPlated.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for L4N-24VDimmer\L4N-24VDimmer-RoundHoles-Plated.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for L4N-24VDimmer\L4N-24VDimmer-SlotHoles-NonPlated.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for L4N-24VDimmer\L4N-24VDimmer-SlotHoles-Plated.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for L4N-24VDimmer\Mayhtier.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for L4N-24VDimmer\Pick Place for L4N-24VDimmer.csv
+DItemRevisionGUID=
+
 [Parameter1]
-Name=Project
-Value=Mayhtier V0.9.0
+Name=address1
+Value=Drachmeweg 111
 
 [Parameter2]
-Name=HWRev
-Value=0.9.0
-
-[Parameter3]
-Name=DrawnBy
-Value=David
-
-[Parameter4]
-Name=CompanyName
-Value=Mayht
-
-[Parameter5]
 Name=address2
 Value=2153PA Nieuw-Vennep
 
+[Parameter3]
+Name=CompanyName
+Value=Mayht
+
+[Parameter4]
+Name=DrawnBy
+Value=David
+
+[Parameter5]
+Name=HWRev
+Value=0.9.0
+
 [Parameter6]
-Name=address1
-Value=Drachmeweg 111
+Name=Project
+Value=Mayhtier V0.9.0
 
 [Configuration1]
 Name=Sources
@@ -460,7 +508,7 @@ PageOptions11=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Brother PT-P900W
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Test Points For Assembly
 OutputName1=Test Point Report
@@ -475,7 +523,7 @@ OutputDefault2=0
 Configuration2_Name1=ForceUpdateSettings
 Configuration2_Item1=False
 Configuration2_Name2=OutputConfigurationParameter1
-Configuration2_Item2=Record=PickPlaceView|Units=Metric|GenerateCSVFormat=True|GenerateTextFormat=False|ShowUnits=False|Separator=.|ExcludeFilterParam=False|IncludeVariations=False|IncludeStandardNoBOM=False|Filter= |FilterActive=False|YFlip=False|Column#1=Name:Designator,Fixed:True,Metric:False,Visible:True,Sort:None,Position:0|Column#2=Name:Comment,Fixed:True,Metric:False,Visible:False,Sort:None,Position:1|Column#3=Name:Layer,Fixed:True,Metric:False,Visible:True,Sort:None,Position:2|Column#4=Name:Footprint,Fixed:True,Metric:False,Visible:False,Sort:None,Position:3|Column#5=Name:Footprint Description,Fixed:True,Metric:False,Visible:False,Sort:None,Position:4|Column#6=Name:Center-X,Fixed:True,Metric:True,Visible:True,Sort:None,Position:5|Column#7=Name:Center-Y,Fixed:True,Metric:True,Visible:True,Sort:None,Position:6|Column#8=Name:Rotation,Fixed:True,Metric:False,Visible:True,Sort:None,Position:7|Column#9=Name:Description,Fixed:True,Metric:False,Visible:False,Sort:None,Position:8|Column#10=Name:ComponentKind,Fixed:True,Metric:False,Visible:False,Sort:None,Position:9|Column#11=Name:Height,Fixed:True,Metric:True,Visible:False,Sort:None,Position:10|Column#12=Name:Ref-X,Fixed:True,Metric:True,Visible:False,Sort:None,Position:11|Column#13=Name:Ref-Y,Fixed:True,Metric:True,Visible:False,Sort:None,Position:12|Column#14=Name:Pad-X,Fixed:True,Metric:True,Visible:False,Sort:None,Position:13|Column#15=Name:Pad-Y,Fixed:True,Metric:True,Visible:False,Sort:None,Position:14|Column#16=Name:Variation,Fixed:True,Metric:False,Visible:False,Sort:None,Position:15|Column#17=Name:Value,Fixed:False,Metric:False,Visible:False,Sort:None,Position:16|Column#18=Name:MPN,Fixed:False,Metric:False,Visible:False,Sort:None,Position:17|Column#19=Name:Package,Fixed:False,Metric:False,Visible:False,Sort:None,Position:18|DocumentPath=C:\Git\Redako-TorqueSensorPWM\Torque2PWM.PcbDoc
+Configuration2_Item2=Record=PickPlaceView|Units=Metric|GenerateCSVFormat=True|GenerateTextFormat=False|ShowUnits=False|Separator=.|ExcludeFilterParam=False|IncludeVariations=False|IncludeStandardNoBOM=False|Filter= |FilterActive=False|YFlip=False|Column#1=Name:Designator,Fixed:True,Metric:False,Visible:True,Sort:None,Position:0|Column#2=Name:Comment,Fixed:True,Metric:False,Visible:False,Sort:None,Position:1|Column#3=Name:Layer,Fixed:True,Metric:False,Visible:True,Sort:None,Position:2|Column#4=Name:Footprint,Fixed:True,Metric:False,Visible:False,Sort:None,Position:3|Column#5=Name:Footprint Description,Fixed:True,Metric:False,Visible:False,Sort:None,Position:4|Column#6=Name:Center-X,Fixed:True,Metric:True,Visible:True,Sort:None,Position:5|Column#7=Name:Center-Y,Fixed:True,Metric:True,Visible:True,Sort:None,Position:6|Column#8=Name:Rotation,Fixed:True,Metric:False,Visible:True,Sort:None,Position:7|Column#9=Name:Description,Fixed:True,Metric:False,Visible:False,Sort:None,Position:8|Column#10=Name:ComponentKind,Fixed:True,Metric:False,Visible:False,Sort:None,Position:9|Column#11=Name:Height,Fixed:True,Metric:True,Visible:False,Sort:None,Position:10|Column#12=Name:Ref-X,Fixed:True,Metric:True,Visible:False,Sort:None,Position:11|Column#13=Name:Ref-Y,Fixed:True,Metric:True,Visible:False,Sort:None,Position:12|Column#14=Name:Pad-X,Fixed:True,Metric:True,Visible:False,Sort:None,Position:13|Column#15=Name:Pad-Y,Fixed:True,Metric:True,Visible:False,Sort:None,Position:14|Column#16=Name:Variation,Fixed:True,Metric:False,Visible:False,Sort:None,Position:15|Column#17=Name:Value,Fixed:False,Metric:False,Visible:False,Sort:None,Position:16|Column#18=Name:MPN,Fixed:False,Metric:False,Visible:False,Sort:None,Position:17|Column#19=Name:Package,Fixed:False,Metric:False,Visible:False,Sort:None,Position:18|Column#20=Name:Rating,Fixed:False,Metric:False,Visible:False,Sort:None,Position:22|Column#21=Name:JLC Part Type,Fixed:False,Metric:False,Visible:False,Sort:None,Position:19|Column#22=Name:JLCPCB Part #,Fixed:False,Metric:False,Visible:False,Sort:None,Position:20|Column#23=Name:Type,Fixed:False,Metric:False,Visible:False,Sort:None,Position:24|Column#24=Name:Manufacturer,Fixed:False,Metric:False,Visible:False,Sort:None,Position:21|Column#25=Name:Tolerance,Fixed:False,Metric:False,Visible:False,Sort:None,Position:23|DocumentPath=C:\Git\Redako-L4N\Hardware\L4N-24VDimmer.PcbDoc
 OutputType3=Assembly
 OutputName3=Assembly Drawings
 OutputDocumentPath3=
@@ -486,7 +534,7 @@ PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Brother PT-P900W
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=NC Drill
 OutputName1=NC Drill Files
@@ -496,7 +544,7 @@ OutputDefault1=0
 Configuration1_Name1=ForceUpdateSettings
 Configuration1_Item1=False
 Configuration1_Name2=OutputConfigurationParameter1
-Configuration1_Item2=BoardEdgeRoutToolDia=2000000|GenerateBoardEdgeRout=False|GenerateDrilledSlotsG85=False|GenerateEIADrillFile=False|GenerateSeparatePlatedNonPlatedFiles=True|GenerateSeparateViaTypeFiles=False|NumberOfDecimals=4|NumberOfUnits=4|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Record=DrillView|Units=Metric|ZeroesMode=SuppressTrailingZeroes|DocumentPath=C:\Git\Redako-TorqueSensorPWM\Torque2PWM.PcbDoc
+Configuration1_Item2=BoardEdgeRoutToolDia=2000000|GenerateBoardEdgeRout=False|GenerateDrilledSlotsG85=False|GenerateEIADrillFile=False|GenerateSeparatePlatedNonPlatedFiles=True|GenerateSeparateViaTypeFiles=False|NumberOfDecimals=4|NumberOfUnits=4|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Record=DrillView|Units=Metric|ZeroesMode=SuppressTrailingZeroes|DocumentPath=C:\Git\Redako-L4N\Hardware\L4N-24VDimmer.PcbDoc
 OutputType2=Mask
 OutputName2=Solder/Paste Mask Prints
 OutputDocumentPath2=
@@ -561,7 +609,7 @@ OutputDefault12=0
 Configuration12_Name1=ForceUpdateSettings
 Configuration12_Item1=False
 Configuration12_Name2=OutputConfigurationParameter1
-Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=RONBLNRT|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Metric|GerberUnit=Metric|IncludeUnconnectedMidLayerPads=False|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=4|NumberOfDecimals=4|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16973830~1,16973832~1,16973834~1,16777217~1,16842751~1,16973835~1,16973833~1,16973831~1,16973837~1|PlotBoardProfile=False|PlotBoardProfileFileName=Torque2PWM.GM|PlotDrillDrawingLayerPair0_Backdrill=False|PlotDrillDrawingLayerPair0_Checked=False|PlotDrillDrawingLayerPair0_DrillType=Regular|PlotDrillDrawingLayerPair0_FileName=Mayhtier.GD1|PlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|PlotDrillDrawingLayerPair0_LowLayer=Top Layer|PlotDrillGuideLayerPair0_Backdrill=False|PlotDrillGuideLayerPair0_Checked=False|PlotDrillGuideLayerPair0_DrillType=Regular|PlotDrillGuideLayerPair0_FileName=Mayhtier.GG1|PlotDrillGuideLayerPair0_HighLayer=Bottom Layer|PlotDrillGuideLayerPair0_LowLayer=Top Layer|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|UserLayerName.Caption0=Mayhtier.GBP|UserLayerName.Caption1=Mayhtier.GTP|UserLayerName.Caption10=Mayhtier.GM92|UserLayerName.Caption11=Mayhtier.GM10|UserLayerName.Caption12=Mayhtier.GBS|UserLayerName.Caption13=Mayhtier.GM7|UserLayerName.Caption14=Mayhtier.GM6|UserLayerName.Caption15=Mayhtier.GM93|UserLayerName.Caption16=Mayhtier.GM16|UserLayerName.Caption17=Mayhtier.GBL|UserLayerName.Caption18=Mayhtier.GM5|UserLayerName.Caption19=Mayhtier.GM15|UserLayerName.Caption2=Mayhtier.GTO|UserLayerName.Caption20=Mayhtier.GM14|UserLayerName.Caption21=Mayhtier.GM19|UserLayerName.Caption22=Mayhtier.GM95|UserLayerName.Caption23=Mayhtier.GM17|UserLayerName.Caption24=Mayhtier.GTL|UserLayerName.Caption25=Mayhtier.GM18|UserLayerName.Caption26=Mayhtier.GM94|UserLayerName.Caption27=Mayhtier.GBO|UserLayerName.Caption28=Mayhtier.GPT|UserLayerName.Caption29=Mayhtier.GM13|UserLayerName.Caption3=Mayhtier.GTS|UserLayerName.Caption30=Mayhtier.GM9|UserLayerName.Caption31=Mayhtier.GM11|UserLayerName.Caption32=Mayhtier.GM1|UserLayerName.Caption33=Mayhtier.GM8|UserLayerName.Caption34=Mayhtier.GM3|UserLayerName.Caption35=Mayhtier.GM20|UserLayerName.Caption36=Mayhtier.GKO|UserLayerName.Caption4=Mayhtier.GM4|UserLayerName.Caption5=Mayhtier.GM2|UserLayerName.Caption6=Mayhtier_Copper_Signal_2.gbr|UserLayerName.Caption7=Mayhtier.GM12|UserLayerName.Caption8=Mayhtier.GPB|UserLayerName.Caption9=Mayhtier_Copper_Signal_1.gbr|UserLayerName.Count=37|UserLayerName.Layer0=16973833|UserLayerName.Layer1=16973832|UserLayerName.Layer10=16908380|UserLayerName.Layer11=16908298|UserLayerName.Layer12=16973835|UserLayerName.Layer13=16908295|UserLayerName.Layer14=16908294|UserLayerName.Layer15=16908381|UserLayerName.Layer16=16908304|UserLayerName.Layer17=16842751|UserLayerName.Layer18=16908293|UserLayerName.Layer19=16908303|UserLayerName.Layer2=16973830|UserLayerName.Layer20=16908302|UserLayerName.Layer21=16908307|UserLayerName.Layer22=16908383|UserLayerName.Layer23=16908305|UserLayerName.Layer24=16777217|UserLayerName.Layer25=16908306|UserLayerName.Layer26=16908382|UserLayerName.Layer27=16973831|UserLayerName.Layer28=16973848|UserLayerName.Layer29=16908301|UserLayerName.Layer3=16973834|UserLayerName.Layer30=16908297|UserLayerName.Layer31=16908299|UserLayerName.Layer32=16908289|UserLayerName.Layer33=16908296|UserLayerName.Layer34=16908291|UserLayerName.Layer35=16908308|UserLayerName.Layer36=16973837|UserLayerName.Layer4=16908292|UserLayerName.Layer5=16908290|UserLayerName.Layer6=16777231|UserLayerName.Layer7=16908300|UserLayerName.Layer8=16973849|UserLayerName.Layer9=16777218|DocumentPath=C:\Git\Redako-TorqueSensorPWM\Torque2PWM.PcbDoc
+Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=RONBLNRT|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=200000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GenerateReports=False|GerberUnit=Metric|GerberUnit=Metric|IncludeUnconnectedMidLayerPads=False|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=4|NumberOfDecimals=4|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16973830~1,16973834~1,16777217~1,16842751~1,16973835~1,16973831~1,16973837~1|PlotBoardProfile=False|PlotBoardProfileFileName=L4N-24VDimmer.GM|PlotDrillDrawingLayerPair0_Backdrill=False|PlotDrillDrawingLayerPair0_Checked=False|PlotDrillDrawingLayerPair0_DrillType=Regular|PlotDrillDrawingLayerPair0_FileName=Mayhtier.GD1|PlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|PlotDrillDrawingLayerPair0_LowLayer=Top Layer|PlotDrillGuideLayerPair0_Backdrill=False|PlotDrillGuideLayerPair0_Checked=False|PlotDrillGuideLayerPair0_DrillType=Regular|PlotDrillGuideLayerPair0_FileName=Mayhtier.GG1|PlotDrillGuideLayerPair0_HighLayer=Bottom Layer|PlotDrillGuideLayerPair0_LowLayer=Top Layer|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|UserLayerName.Caption0=Mayhtier.GKO|UserLayerName.Caption1=Mayhtier.GTP|UserLayerName.Caption10=Mayhtier.GM92|UserLayerName.Caption11=Mayhtier.GM10|UserLayerName.Caption12=Mayhtier.GBS|UserLayerName.Caption13=Mayhtier.GM7|UserLayerName.Caption14=Mayhtier.GM6|UserLayerName.Caption15=Mayhtier.GM93|UserLayerName.Caption16=Mayhtier.GM16|UserLayerName.Caption17=Mayhtier.GBL|UserLayerName.Caption18=Mayhtier.GM5|UserLayerName.Caption19=Mayhtier.GM15|UserLayerName.Caption2=Mayhtier.GTO|UserLayerName.Caption20=Mayhtier.GM14|UserLayerName.Caption21=Mayhtier.GM19|UserLayerName.Caption22=Mayhtier.GM95|UserLayerName.Caption23=Mayhtier.GM17|UserLayerName.Caption24=Mayhtier.GTL|UserLayerName.Caption25=Mayhtier.GM18|UserLayerName.Caption26=Mayhtier.GM94|UserLayerName.Caption27=Mayhtier.GBO|UserLayerName.Caption28=Mayhtier.GPT|UserLayerName.Caption29=Mayhtier.GM13|UserLayerName.Caption3=Mayhtier.GTS|UserLayerName.Caption30=Mayhtier.GM9|UserLayerName.Caption31=Mayhtier.GM11|UserLayerName.Caption32=Mayhtier.GM1|UserLayerName.Caption33=Mayhtier.GM8|UserLayerName.Caption34=Mayhtier.GM3|UserLayerName.Caption35=Mayhtier.GM20|UserLayerName.Caption36=Mayhtier.GBP|UserLayerName.Caption4=Mayhtier.GM4|UserLayerName.Caption5=Mayhtier.GM2|UserLayerName.Caption6=Mayhtier_Copper_Signal_2.gbr|UserLayerName.Caption7=Mayhtier.GM12|UserLayerName.Caption8=Mayhtier.GPB|UserLayerName.Caption9=Mayhtier_Copper_Signal_1.gbr|UserLayerName.Count=37|UserLayerName.Layer0=16973837|UserLayerName.Layer1=16973832|UserLayerName.Layer10=16908380|UserLayerName.Layer11=16908298|UserLayerName.Layer12=16973835|UserLayerName.Layer13=16908295|UserLayerName.Layer14=16908294|UserLayerName.Layer15=16908381|UserLayerName.Layer16=16908304|UserLayerName.Layer17=16842751|UserLayerName.Layer18=16908293|UserLayerName.Layer19=16908303|UserLayerName.Layer2=16973830|UserLayerName.Layer20=16908302|UserLayerName.Layer21=16908307|UserLayerName.Layer22=16908383|UserLayerName.Layer23=16908305|UserLayerName.Layer24=16777217|UserLayerName.Layer25=16908306|UserLayerName.Layer26=16908382|UserLayerName.Layer27=16973831|UserLayerName.Layer28=16973848|UserLayerName.Layer29=16908301|UserLayerName.Layer3=16973834|UserLayerName.Layer30=16908297|UserLayerName.Layer31=16908299|UserLayerName.Layer32=16908289|UserLayerName.Layer33=16908296|UserLayerName.Layer34=16908291|UserLayerName.Layer35=16908308|UserLayerName.Layer36=16973833|UserLayerName.Layer4=16908292|UserLayerName.Layer5=16908290|UserLayerName.Layer6=16777231|UserLayerName.Layer7=16908300|UserLayerName.Layer8=16973849|UserLayerName.Layer9=16777218|DocumentPath=C:\Git\Redako-L4N\Hardware\L4N-24VDimmer.PcbDoc
 
 [OutputGroup6]
 Name=Report Outputs
@@ -581,13 +629,13 @@ Configuration1_Item2=False
 Configuration1_Name3=General
 Configuration1_Item3=OpenExported=False|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=False|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=1717|FormHeight=974|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=USD|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=0|UseDirectApi=False|BomSetName=
 Configuration1_Name4=GroupOrder
-Configuration1_Item4=Value=True|Package=True|MPN=True
+Configuration1_Item4=Value=True|Package=True|MPN=True|JLCPCB Part #=True
 Configuration1_Name5=SortOrder
-Configuration1_Item5=Value=Up
+Configuration1_Item5=MPN=Up
 Configuration1_Name6=VisibleOrder
-Configuration1_Item6=Designator=161|Quantity=120|MPN=193|Package=100|Value=150|Manufacturer=100
+Configuration1_Item6=Designator=161|Quantity=120|MPN=193|Package=100|Value=150|Manufacturer=100|JLCPCB Part #=100
 Configuration1_Name7=VisibleOrder_Flat
-Configuration1_Item7=Designator=161|Quantity=120|MPN=193|Package=100|Value=150|Manufacturer=100
+Configuration1_Item7=Designator=161|Quantity=120|MPN=193|Package=100|Value=150|Manufacturer=100|JLCPCB Part #=100
 OutputType2=ComponentCrossReference
 OutputName2=Component Cross Reference Report
 OutputDocumentPath2=

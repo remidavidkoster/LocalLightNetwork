@@ -28,7 +28,6 @@
 /* USER CODE BEGIN Includes */
 
 #define LIMIT(min, x, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
-#define ABS(x) ((x) < 0 ? -(x) : (x))
 
 
 #include <math.h>
@@ -36,6 +35,7 @@
 
 
 
+#define ABS(x) ((x) < 0 ? -(x) : (x))
 
 #define PI 3.14159265359f
 
@@ -46,14 +46,28 @@ float cosFast(float x){
     return x;
 }
 
-
 // Cosine ramp from 0 to 1
 float flatCos(float x){
     return 0.5f - 0.5f * (cosFast(PI * x));
 }
 
 
-float curveGamma = 2.2f;
+
+
+
+float CIELAB(float x){
+	float lum = x * 100.0f;
+	return lum < 8.0f ? lum / 903.3f : powf(((lum + 16) / 116), 3);
+}
+
+float sRGB(float x){
+	return x <= 0.04045f ? x / 12.92f : powf ((x + 0.055f) / 1.055f, 2.4f);
+}
+
+
+
+
+float curveGamma = 2.5f;
 
 // Highest value that is still fully off
 #define PWM_MIN 0x0022
@@ -66,13 +80,10 @@ int perceivedToPWM(float perceivedBrightness) {
     if (perceivedBrightness < 0.0f) perceivedBrightness = 0.0f;
     if (perceivedBrightness > 1.0f) perceivedBrightness = 1.0f;
 
-    // Apply inverse of Stevens' Power Law
-    float intensity = pow(perceivedBrightness, curveGamma);
 
-
-
-
-
+    float intensity = powf(perceivedBrightness, curveGamma);
+//    float intensity = CIELAB(perceivedBrightness);
+//    float intensity = sRGB(perceivedBrightness);
 
     // Scale to PWM range
     int pwmValue = PWM_MIN + (int)(flatCos(intensity) * (PWM_MAX - PWM_MIN));
@@ -86,7 +97,9 @@ int perceivedToPWM(float perceivedBrightness) {
 
 int pwmValue;
 
-int delay = 200;
+int delay = 400;
+
+
 
 /* USER CODE END Includes */
 
@@ -185,6 +198,8 @@ int main(void)
 		  for (TIM17->CNT = 0; TIM17->CNT < delay;);
 	  }
 
+
+	  HAL_Delay(1000);
 	  for (int i = 0; i < 0xFFF; i++){
 
 		  pwmValue = perceivedToPWM((0xFFE - i) /(float)0xfff);
@@ -197,6 +212,7 @@ int main(void)
 		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP3xR = pwmValue;
 		  for (TIM17->CNT = 0; TIM17->CNT < delay;);
 	  }
+	  HAL_Delay(1000);
 
 
 

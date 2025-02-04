@@ -19,12 +19,74 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "hrtim.h"
+#include "tim.h"
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#define LIMIT(min, x, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+
+
+#include <math.h>
+
+
+
+
+
+#define PI 3.14159265359f
+
+float cosFast(float x){
+    x *= 0.159154943f;
+    x -= 0.25f + (int)(x + 0.25f);
+    x *= 16.0f * (ABS(x) - 0.5f);
+    return x;
+}
+
+
+// Cosine ramp from 0 to 1
+float flatCos(float x){
+    return 0.5f - 0.5f * (cosFast(PI * x));
+}
+
+
+float curveGamma = 2.2f;
+
+// Highest value that is still fully off
+#define PWM_MIN 0x0022
+
+// Lowest value that is fully on
+#define PWM_MAX 0xFFF8
+
+// Function to convert perceived brightness (0.0 to 1.0) to PWM value (0 to 255)
+int perceivedToPWM(float perceivedBrightness) {
+    if (perceivedBrightness < 0.0f) perceivedBrightness = 0.0f;
+    if (perceivedBrightness > 1.0f) perceivedBrightness = 1.0f;
+
+    // Apply inverse of Stevens' Power Law
+    float intensity = pow(perceivedBrightness, curveGamma);
+
+
+
+
+
+
+    // Scale to PWM range
+    int pwmValue = PWM_MIN + (int)(flatCos(intensity) * (PWM_MAX - PWM_MIN));
+
+    // Clamp the value
+    if (pwmValue > PWM_MAX) pwmValue = PWM_MAX;
+    if (pwmValue < PWM_MIN) pwmValue = PWM_MIN;
+
+    return pwmValue;
+}
+
+int pwmValue;
+
+int delay = 200;
 
 /* USER CODE END Includes */
 
@@ -91,9 +153,10 @@ int main(void)
   MX_HRTIM1_Init();
   MX_USART2_UART_Init();
   MX_USB_Device_Init();
+  MX_TIM17_Init();
   /* USER CODE BEGIN 2 */
 
-
+  HAL_TIM_Base_Start(&htim17);
 
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TA1);  // Enable the generation of the waveform signal on the designated output
   HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TA2);  // Enable the generation of the waveform signal on the designated output
@@ -108,6 +171,35 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+	  for (int i = 0; i < 0xFFF; i++){
+
+		  pwmValue = perceivedToPWM(i/(float)0xfff);
+
+
+
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP3xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP1xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP3xR = pwmValue;
+		  for (TIM17->CNT = 0; TIM17->CNT < delay;);
+	  }
+
+	  for (int i = 0; i < 0xFFF; i++){
+
+		  pwmValue = perceivedToPWM((0xFFE - i) /(float)0xfff);
+
+
+
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP3xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP1xR = pwmValue;
+		  HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP3xR = pwmValue;
+		  for (TIM17->CNT = 0; TIM17->CNT < delay;);
+	  }
+
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

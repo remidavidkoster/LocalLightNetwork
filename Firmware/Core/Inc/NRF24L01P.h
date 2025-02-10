@@ -4,6 +4,7 @@
 #include "stm32g4xx_hal.h"
 #include "stdbool.h"
 
+#define mirf_CONFIG ((1<<EN_CRC) | (0<<CRCO))
 
 /* Memory Map */
 #define CONFIG      0x00
@@ -30,6 +31,8 @@
 #define RX_PW_P4    0x15
 #define RX_PW_P5    0x16
 #define FIFO_STATUS 0x17
+#define DYNPD       0x1C
+#define FEATURE     0x1D
 
 /* Bit Mnemonics */
 #define MASK_RX_DR  6
@@ -81,6 +84,7 @@
 #define FLUSH_RX      0xE2
 #define REUSE_TX_PL   0xE3
 #define NOP           0xFF
+#define R_RX_PL_WID   0x60
 
 /* Data Stuff */
 #define HIGHPOWER250K 0B00100110
@@ -93,27 +97,12 @@
 
 // In sending mode.
 extern uint8_t PTX;
-//
-//// CE Pin controls RX / TX.
-//uint8_t cePin;
-//
-//// CSN Pin Chip Select Not.
-//uint8_t csnPin;
-//
-//// dataIn pin, default 12.
-//uint8_t inPin;
-//
-//// dataOut pin, default 11.
-//uint8_t outPin;
-//
-//// clkPin, default 13.
-//uint8_t clkPin;
 
 // Channel 0 - 127 or 0 - 84 in the US.
 extern uint8_t channel;
 
 // Payload width in uint8_ts default 16 max 32.
-extern uint8_t payload;
+extern uint8_t payloadSize;
 
 #ifdef __cplusplus
 extern "C" {
@@ -121,8 +110,8 @@ extern "C" {
 
 uint8_t softSpiTransfer(uint8_t working);
 void init();
-void config();
-void send(uint8_t *value);
+void config(uint8_t dynamicPayload);
+void send(uint8_t * value, uint8_t length);
 void setRADDR(uint8_t * adr);
 void setTADDR(uint8_t * adr);
 bool dataReady();
@@ -141,9 +130,11 @@ void powerUpRx();
 void powerUpTx();
 void powerDown();
 void setDataStuff(uint8_t dataStuff);
-
+void enableDynamicPayload();
+uint8_t getPayloadLength();
 void csnHigh();
 void csnLow();
+void setAddressWidth(uint8_t width);
 
 void ceHigh();
 void ceLow();

@@ -66,6 +66,10 @@ float table[4096] = {0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.000
 
 
 
+
+
+
+
 #define LIMIT(min, x, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
 
 #include <math.h>
@@ -175,7 +179,8 @@ char message[32] = {0}; // Max payload size
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-char data[8] = "Test123";
+char data[] = "Test1234Test1234Test1234Test123";
+uint8_t length = 10;
 /* USER CODE END 0 */
 
 /**
@@ -225,12 +230,12 @@ int main(void)
 
 	// NRF24L01P init
 	init();
-	setRADDR((uint8_t *)"L4NHA");
-	setTADDR((uint8_t *)"L4NHA");
+    setAddressWidth(3);
+    setRADDR((uint8_t *)"L4N");
+    setTADDR((uint8_t *)"L4N");
 
-	payload = 8;
-	channel = 108;
-	config();
+	channel = 100;
+	config(1);
 
 
 
@@ -288,7 +293,7 @@ int main(void)
 		//	  }
 
 		if (!HAL_GPIO_ReadPin(BUT0_GPIO_Port, BUT0_Pin)){
-			send((uint8_t*)data);
+			send((uint8_t*)data, length);
 			while (isSending());
 			while (!HAL_GPIO_ReadPin(BUT0_GPIO_Port, BUT0_Pin));
 		}

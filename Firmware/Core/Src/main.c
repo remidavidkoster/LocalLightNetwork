@@ -174,13 +174,65 @@ void PWM_SetAll(uint16_t v){
 }
 
 char message[32] = {0}; // Max payload size
+char responseBuffer[32] = {0};
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-char data[] = "Test1234Test1234Test1234Test123";
-uint8_t length = 10;
+
+
+uint8_t state;
+uint8_t lastState;
+uint8_t brightness;
+uint8_t lastBrightness;
+
+char base_topic[] = "L4N1/1";
+
+char command_topic[] = "/set/";
+char brightness_command_topic[] = "/b/set/";
+
+char state_topic[] = "/state/";
+char brightness_state_topic[] = "/b/state/";
+
+
+
+void processMessage(char* incomingMessage, char* responseBuffer) {
+    // Check if the message starts with the base topic "L4N1/1"
+    if (strncmp(incomingMessage, base_topic, strlen(base_topic)) == 0) {
+        // Skip the "L4N1/1" part by moving the pointer forward
+        char* remainingMessage = incomingMessage + strlen(base_topic); // No need to skip next "/"
+
+        // Check if the remaining message matches "/b/set" or "/set"
+        if (strncmp(remainingMessage, brightness_command_topic, strlen(brightness_command_topic)) == 0) {
+            // It's a /b/set message, parse the value after "/b/set/"
+            remainingMessage += strlen(brightness_command_topic);  // Skip "/b/set"
+
+            // Convert to integer (handle "173" case)
+            brightness = atoi(remainingMessage);
+
+            // Generate the response message: "L4N1/1/b/state/173"
+            sprintf(responseBuffer, "%s%s%d", base_topic, brightness_state_topic, brightness);
+        }
+
+        else if (strncmp(remainingMessage, command_topic, strlen(command_topic)) == 0) {
+            // It's a /set message, parse the state value
+            remainingMessage += strlen(command_topic);  // Skip "/set"
+
+            // Convert to integer
+            int parsedState = atoi(remainingMessage);
+
+            // Only allow valid states (0 or 1)
+            if (parsedState == 0 || parsedState == 1) {
+                state = parsedState; // Update global state variable
+
+                // Generate the response message: "L4N1/1/state/0" or "L4N1/1/state/1"
+                sprintf(responseBuffer, "%s%s%d", base_topic, state_topic, state);
+            }
+        }
+    }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -248,92 +300,33 @@ int main(void)
 	/* USER CODE BEGIN WHILE */
 	while (1){
 
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(table125x3[i], 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 400;);
-		//	  }
-		//
-		//	  HAL_Delay(1000);
-		//
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(table125x3[0xffe - i], 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 400;);
-		//	  }
-		//
-		//	  HAL_Delay(1000);
-
-
-
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(table[i], 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 400;);
-		//	  }
-		//
-		//	  HAL_Delay(1000);
-		//
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(table[0xffe - i], 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 400;);
-		//	  }
-		//
-		//	  HAL_Delay(1000);
-		//
-		//
-		//
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(flatCos((i / (float)0xfff)), 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 320;);
-		//	  }
-		//
-		//	  HAL_Delay(1000);
-		//
-		//	  for (int i = 0; i < 0xFFF; i++){
-		//		  PWM_SetAll(PWM_MIN + (int)(powf(flatCos((0xffe - i) / (float)0xfff), 2.5) * (PWM_MAX - PWM_MIN)));
-		//		  for (TIM17->CNT = 0; TIM17->CNT < 320;);
-		//	  }
-
-		if (!HAL_GPIO_ReadPin(BUT0_GPIO_Port, BUT0_Pin)){
-			send((uint8_t*)data, length);
-			while (isSending());
-			while (!HAL_GPIO_ReadPin(BUT0_GPIO_Port, BUT0_Pin));
-		}
-
 		if (dataReady()){
-
 			getData((uint8_t*)message);
 
+			processMessage(message, responseBuffer);
 
-			// Step 1: Check if the string contains "fade"
-			char *fade_pos = strstr(message, "fade");
+			send((uint8_t*)responseBuffer, strlen(responseBuffer));
+			while (isSending());
 
-			if (fade_pos != NULL) {
-				// Step 2: Extract the number part after "fade"
-				char *num_part = fade_pos + 4; // Skip the "fade" part (4 characters)
 
-				// Step 3: Convert the numeric part to an integer
-				int number = atoi(num_part);
 
-				if (number != 0){
+			if (state != lastState || brightness != lastBrightness){
 
-					for (int i = 0; i < 0xFFF; i++){
-						PWM_SetAll(PWM_MIN + (int)(powf(flatCos((i / (float)0xfff)), 2.5) * (PWM_MAX - PWM_MIN)));
-						for (TIM17->CNT = 0; TIM17->CNT < 320;);
-					}
-				}
+				PWM_SetAll(PWM_MIN + (int)(powf(state ? brightness / 255.0f : 0, 2.5f) * (PWM_MAX - PWM_MIN)));
 
-				else {
-					for (int i = 0; i < 0xFFF; i++){
-						PWM_SetAll(PWM_MIN + (int)(powf(flatCos((0xffe - i) / (float)0xfff), 2.5) * (PWM_MAX - PWM_MIN)));
-						for (TIM17->CNT = 0; TIM17->CNT < 320;);
-					}
-				}
+//				for (int i = 0; i < 0xFFF; i++){
+//					PWM_SetAll(PWM_MIN + (int)(table[i] * (PWM_MAX - PWM_MIN)));
+//					for (TIM17->CNT = 0; TIM17->CNT < 320;);
+//				}
 			}
 
+//			else if (state == 1 && oldState != 1){
+//				for (int i = 0; i < 0xFFF; i++){
+//					PWM_SetAll(PWM_MIN + (int)(table[0xffe - i] * (PWM_MAX - PWM_MIN)));
+//					for (TIM17->CNT = 0; TIM17->CNT < 320;);
+//				}
+//			}
 		}
-
-
-
-
 
 
 		/* USER CODE END WHILE */

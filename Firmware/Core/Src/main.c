@@ -39,24 +39,22 @@ float CIELAB(float x) {
 // Lowest value that is fully on
 #define PWM_MAX 0xFFF8
 
-void SystemClock_Config(void);
-
 void PWM_Set(uint8_t ch, uint16_t v) {
-    if (ch == 1 || !ch) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR = v;
-    if (ch == 2 || !ch) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP3xR = v;
-    if (ch == 3 || !ch) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP1xR = v;
-    if (ch == 4 || !ch) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP3xR = v;
+    if (ch == 0) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP3xR = v;
+    if (ch == 1) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_A].CMP1xR = v;
+    if (ch == 2) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP3xR = v;
+    if (ch == 3) HRTIM1->sTimerxRegs[HRTIM_TIMERINDEX_TIMER_D].CMP1xR = v;
 }
 
 char message[32] = {0};
 char responseBuffer[32] = {0};
 
-uint8_t state = 1;
-uint8_t lastState = 1;
-float brightness = 0.5f;
-float lastBrightness = 0;
+uint8_t state[4] = {1, 1, 1, 1};
+uint8_t lastState[4] = {1, 1, 1, 1};
+float brightness[4] = {0.5f, 0.5f, 0.5f, 0.5f};
+float lastBrightness[4] = {0, 0, 0, 0};
 
-char base_topic[] = "L4N1/1";
+char base_topic[] = "L4N1/";
 
 char command_topic[] = "/set/";
 char brightness_command_topic[] = "/b/set/";
@@ -65,10 +63,16 @@ char state_topic[] = "/state/";
 char brightness_state_topic[] = "/b/state/";
 
 void processMessage(char* incomingMessage, char* responseBuffer) {
-    // Check if the message starts with the base topic "L4N1/1"
+    // Check if the message starts with the base topic "L4N1/"
     if (strncmp(incomingMessage, base_topic, strlen(base_topic)) == 0) {
-        // Skip the "L4N1/1" part by moving the pointer forward
+        // Skip the "L4N1/" part by moving the pointer forward
         char* remainingMessage = incomingMessage + strlen(base_topic); // No need to skip next "/"
+
+        // Determine the channel (1-4)
+        int channel = remainingMessage[0] - '1';
+        if (channel < 0 || channel > 3) return; // Invalid channel
+
+        remainingMessage++; // Skip the channel number
 
         // Check if the remaining message matches "/b/set" or "/set"
         if (strncmp(remainingMessage, brightness_command_topic, strlen(brightness_command_topic)) == 0) {
@@ -76,10 +80,10 @@ void processMessage(char* incomingMessage, char* responseBuffer) {
             remainingMessage += strlen(brightness_command_topic);  // Skip "/b/set"
 
             // Convert to integer (handle "173" case)
-            brightness = atoi(remainingMessage) / 255.0f;
+            brightness[channel] = atoi(remainingMessage) / 255.0f;
 
             // Generate the response message: "L4N1/1/b/state/173"
-            sprintf(responseBuffer, "%s%s%d", base_topic, brightness_state_topic, (int)roundf(brightness * 255.0f));
+            sprintf(responseBuffer, "%s%d%s%d", base_topic, channel + 1, brightness_state_topic, (int)roundf(brightness[channel] * 255.0f));
         } else if (strncmp(remainingMessage, command_topic, strlen(command_topic)) == 0) {
             // It's a /set message, parse the state value
             remainingMessage += strlen(command_topic);  // Skip "/set"
@@ -89,22 +93,22 @@ void processMessage(char* incomingMessage, char* responseBuffer) {
 
             // Only allow valid states (0 or 1)
             if (parsedState == 0 || parsedState == 1) {
-                state = parsedState; // Update global state variable
+                state[channel] = parsedState; // Update global state variable
 
                 // Generate the response message: "L4N1/1/state/0" or "L4N1/1/state/1"
-                sprintf(responseBuffer, "%s%s%d", base_topic, state_topic, state);
+                sprintf(responseBuffer, "%s%d%s%d", base_topic, channel + 1, state_topic, state[channel]);
             }
         }
     }
 }
 
-void setLEDBrightness(float value) {
-    PWM_Set(0, PWM_MIN + (int)roundf(value * (PWM_MAX - PWM_MIN)));
+void setLEDBrightness(uint8_t channel, float value) {
+    PWM_Set(channel, PWM_MIN + (int)roundf(value * (PWM_MAX - PWM_MIN)));
 }
 
-void fadeToNewBrightness(int steps, int delayUs) {
-    float startBrightness = lastState ? lastBrightness : 0.0f;
-    float endBrightness = state ? brightness : 0.0f;
+void fadeToNewBrightness(uint8_t channel, int steps, int delayUs) {
+    float startBrightness = lastState[channel] ? lastBrightness[channel] : 0.0f;
+    float endBrightness = state[channel] ? brightness[channel] : 0.0f;
 
     for (int i = 0; i <= steps; i++) {
         float t = (float)i / (float)steps;  // Normalized time [0,1]
@@ -113,7 +117,7 @@ void fadeToNewBrightness(int steps, int delayUs) {
 
         // Apply gamma correction
         float gammaCorrected = powf(interpolatedBrightness, 2.5f);
-        setLEDBrightness(gammaCorrected);
+        setLEDBrightness(channel, gammaCorrected);
 
         // Small delay
         uint32_t timestamp = TIM2->CNT;
@@ -121,11 +125,11 @@ void fadeToNewBrightness(int steps, int delayUs) {
     }
 
     // Ensure final brightness is set correctly
-    setLEDBrightness(powf(endBrightness, 2.5f));
+    setLEDBrightness(channel, powf(endBrightness, 2.5f));
 
     // Update lastBrightness and lastState at the end of the transition
-    lastBrightness = brightness;
-    lastState = state;
+    lastBrightness[channel] = brightness[channel];
+    lastState[channel] = state[channel];
 }
 
 int main(void) {
@@ -162,7 +166,9 @@ int main(void) {
     channel = 100;
     config(1);
 
-    fadeToNewBrightness(250, 2000);
+    for (int i = 0; i < 4; i++) {
+        fadeToNewBrightness(i, 250, 2000);
+    }
 
     while (1) {
         if (dataReady()) {
@@ -173,8 +179,10 @@ int main(void) {
             send((uint8_t*)responseBuffer, strlen(responseBuffer));
             while (isSending());
 
-            if (state != lastState || brightness != lastBrightness) {
-                fadeToNewBrightness(250, 2000);
+            for (int i = 0; i < 4; i++) {
+                if (state[i] != lastState[i] || brightness[i] != lastBrightness[i]) {
+                    fadeToNewBrightness(i, 250, 2000);
+                }
             }
         }
     }

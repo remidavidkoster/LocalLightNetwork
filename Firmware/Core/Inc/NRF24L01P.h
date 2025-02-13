@@ -140,6 +140,7 @@ void ceHigh();
 void ceLow();
 
 void flushRx();
+void flushTx();
 
 #ifdef __cplusplus
 }

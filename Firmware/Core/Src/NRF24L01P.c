@@ -14,6 +14,7 @@ uint8_t channel;
 // Payload width in uint8_ts. default 16 max 32.
 uint8_t payloadSize;
 
+uint8_t lastStatus;
 
 uint8_t softSpiTransfer(uint8_t shOut) {
 	uint8_t shIn = 0;
@@ -281,6 +282,7 @@ bool isSending() {
 uint8_t getStatus() {
 	uint8_t rv = 0;
 	readRegister(STATUS, &rv, 1);
+	lastStatus = rv;
 	return rv;
 }
 
@@ -297,6 +299,14 @@ void flushRx() {
 	softSpiTransfer(FLUSH_RX);
 	csnHigh();
 }
+
+void flushTx() {
+	csnLow();
+	softSpiTransfer(FLUSH_TX);
+	csnHigh();
+}
+
+
 
 void powerUpTx() {
 	PTX = 1;
